@@ -1,0 +1,18 @@
+# how to talk to robots
+
+> Free, open-source AI literacy resource. Plain-English guides, prompts, and
+> frameworks that help beginners — teachers, parents, small business owners,
+> and the simply curious — use AI tools like ChatGPT and Claude as thinking
+> partners, not shortcuts. Built by educators and engineers.
+
+## Core resources
+- [Resource Library](https://www.talktorobots.org/library/): every guide, prompt, and framework, tagged by topic, audience, and type
+- [For Teachers](https://www.talktorobots.org/guides/teachers/): top uses of ChatGPT & Claude in the classroom
+- [For Parents](https://www.talktorobots.org/guides/parents/): AI for homework help, planning, and learning together
+- [For Small Business](https://www.talktorobots.org/guides/business/): AI for emails, marketing, and admin work
+- [The Socratic Peerbot](https://www.talktorobots.org/peerbot/): a framework that turns any AI chatbot into a critical-thinking partner
+
+## About
+- [About](https://www.talktorobots.org/about/): mission, team, and how the site is built
+- [Contribute](https://www.talktorobots.org/contribute/): submit a prompt or guide
+- Community co-created with Third Space (thirdspaced.com). Content is free to use and share.
