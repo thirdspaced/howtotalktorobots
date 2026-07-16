@@ -1,0 +1,25 @@
+---
+import TagPill from './TagPill.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'library'>;
+}
+const { entry } = Astro.props;
+const { title, description, domains, topics, type } = entry.data;
+---
+
+<article
+  class="card"
+  data-domains={domains.join(' ')}
+  data-topics={topics.join(' ')}
+  data-type={type}
+>
+  <h3><a href={`/library/${entry.id}/`}>{title}</a></h3>
+  <p>{description}</p>
+  <div class="tags">
+    <TagPill label={type} kind="type" />
+    {domains.filter((d) => d !== 'everyone').map((d) => <TagPill label={d} kind="domain" />)}
+    {topics.slice(0, 3).map((t) => <TagPill label={t} kind="topic" />)}
+  </div>
+</article>

@@ -1,0 +1,9 @@
+---
+interface Props {
+  label: string;
+  kind: 'domain' | 'topic' | 'type';
+}
+const { label, kind } = Astro.props;
+---
+
+<span class="tag" data-kind={kind}>{label}</span>

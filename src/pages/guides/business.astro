@@ -1,0 +1,68 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import type { TopTenItem } from '../../components/GuidePage.astro';
+
+const items: TopTenItem[] = [
+  {
+    title: 'Write the emails you keep putting off',
+    body: `Chasing an invoice, raising a price, saying no to a good customer. The hard part isn't the writing — it's the calibration. This prompt makes the AI interview you about the situation, then gives you two strategies to choose between.`,
+    link: { href: '/library/write-a-tricky-email/', label: 'Get the tricky-email prompt →' },
+  },
+  {
+    title: 'Get the business out of your head and into SOPs',
+    body: `The most valuable thing AI can do for a small business isn't marketing copy — it's turning what only you know into documentation someone else can follow. Talk through how you do something; get back a training doc. This is how you take a vacation.`,
+    prompt: `Interview me about a process in my business so we can turn it into a written procedure someone new could follow. Ask me one question at a time: what the process is, when it happens, each step in order (push me for details I'd forget to mention — the "obvious" stuff), what can go wrong, and how to tell it was done right. Then write it up as a one-page SOP with numbered steps, a "common mistakes" note, and a "when to ask the owner" line.`,
+  },
+  {
+    title: 'Respond to reviews — especially the bad ones',
+    body: `A bad review answered well wins more customers than a good review ignored. AI helps you get past the (justified!) emotional first draft to the response future customers will read.`,
+    prompt: `A customer left this review: [paste it]. First, tell me what a future customer reading this review would worry about. Then draft two responses I could post publicly: one that briefly owns what's fair and states what we're doing about it, and one for if the review is unfair or missing context — firm but gracious, correcting the record without arguing. Both under 100 words, neither defensive. Flag any phrase that could read as legally risky (admitting fault, promising refunds).`,
+  },
+  {
+    title: 'Think through pricing like you have a CFO',
+    body: `Pricing is the highest-leverage decision most small businesses never revisit. AI can't tell you the right price — but it's an excellent sparring partner for the analysis you keep avoiding. Use round numbers; no real financials need to leave your desk.`,
+    prompt: `Act as a pricing sparring partner for my business. Ask me one at a time: what I sell, roughly what it costs me to deliver (time and materials), what I charge now and when I last changed it, what competitors charge, and how customers react to my prices today. Then walk me through: what my current margin actually is, what a 10% raise would mean in real dollars, which customers I'd risk losing and whether that's a problem, and how I could test a change on a small slice before committing. Challenge my assumptions — don't just agree with me.`,
+  },
+  {
+    title: 'Read contracts before you pay a lawyer',
+    body: `A lease, a vendor agreement, a client's terms. AI is a strong first-pass reader: it finds the clauses worth worrying about so your (still necessary) lawyer time is spent on the right questions. First pass — not final word.`,
+    prompt: `I'm going to paste a contract I've been asked to sign (identifying details removed). You're not my lawyer and this isn't legal advice — you're my first-pass reader. Tell me: what I'm agreeing to in plain language, which clauses are unusual or one-sided compared to what's standard for this kind of agreement, what happens if I want out, and the five questions I should ask a lawyer or push back on before signing. Point to the specific section for each concern so I can find it.`,
+  },
+  {
+    title: 'Do a week of marketing in an afternoon — in your voice',
+    body: `Yes, AI writes social posts and newsletters; every listicle says so. What they skip: generic AI marketing sounds like everyone else's, and customers can smell it. Feed it your voice first.`,
+    prompt: `Here are three examples of marketing I've written that sounds like my business: [paste them]. Study the voice — sentence length, humor, how formal, what we never say.
+
+Now help me plan two weeks of marketing: ask me what's happening in the business (new products, events, slow days to fill), then draft a mix of social posts and one email newsletter in MY voice. Anything that sounds like it could be from any business in my industry, rewrite before showing me.`,
+  },
+  {
+    title: 'Understand your own numbers',
+    body: `You don't need to become a bookkeeper — you need to know what the numbers are trying to tell you. Ask the "dumb" questions you'd never ask your accountant at their hourly rate. Use rounded figures; the patterns matter, not the pennies.`,
+    prompt: `I run a small business and I want to understand my finances better — explain things like I'm smart but untrained, and never judge. Here's my rough monthly picture (rounded): revenue [X], main costs [list them]. Walk me through: where my money actually goes as percentages, which number would improve my take-home most if it moved 10%, what "cash flow problem" vs "profit problem" would look like in my case, and one thing to track weekly that I probably don't. Then let me ask follow-up questions.`,
+  },
+  {
+    title: 'Hire better with a small-business toolkit',
+    body: `No HR department? AI drafts the job post, builds interview questions that predict performance instead of vibes, and helps you compare candidates against the same bar — which is fairer, too.`,
+    prompt: `Help me hire for a [role] at my [type of business]. First ask me what this person will actually do all day, what the last person (if any) struggled with, and what I can pay. Then produce: a job post that's honest and sounds like us (not corporate boilerplate), five interview questions tied to the real work — each with what a strong vs. weak answer sounds like — and a simple scorecard so I evaluate every candidate against the same criteria instead of gut feel.`,
+  },
+  {
+    title: 'Prep for the conversations that decide things',
+    body: `The negotiation with your supplier, the meeting with the bank, the talk with an underperforming employee. Rehearse against an AI that plays the other side — it's the prep work owners never have a partner for.`,
+    prompt: `Help me prepare for a difficult business conversation. Ask me: who it's with, what I need to get out of it, what they're likely to want, and what I'm worried they'll say. Then (1) tell me my strongest points and where I'm vulnerable, (2) role-play as the other person — realistically, not as a pushover — so I can practice, and (3) after each of my responses, coach me: what worked, what to say instead. End with the three sentences I most need to have ready.`,
+  },
+  {
+    title: 'Know what NOT to paste in',
+    body: `The rule that protects everything else on this list. Customer lists, employee records, exact financials, passwords, anything covered by an NDA — describe patterns instead of pasting records ("a customer database with about 800 contacts" not the database). On free consumer AI plans your conversations may be used to train models; business plans with data protections exist if you need to work with sensitive material. When in doubt, round the numbers and blank the names — the advice stays just as good.`,
+  },
+];
+---
+
+<GuidePage
+  domain="business"
+  emoji="💼"
+  title="AI for small business"
+  metaTitle="Top 10 uses of ChatGPT & Claude for small business — how to talk to robots"
+  description="Ten uses of AI that actually move the needle for small businesses: SOPs, pricing analysis, review responses, contract first-passes, and hiring — beyond the usual marketing-copy advice. Free copy-paste prompts."
+  intro="Most 'AI for small business' advice stops at marketing copy and chatbots. That's real, but it's the shallow end. This list covers what actually moves the needle for a small operation — getting your business out of your head and into documentation, pricing like you have a CFO, reading contracts before the lawyer, and rehearsing the conversations that decide things. You don't need new software: everything here works in the free ChatGPT or Claude you already have."
+  items={items}
+/>

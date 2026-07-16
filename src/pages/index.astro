@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SearchBar from '../components/SearchBar.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+
+const all = (await getCollection('library')).filter((e) => !e.data.draft);
+const featured = all
+  .filter((e) => e.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+// Suggested question chips — each deep-links to a real library entry.
+const chips = [
+  { label: 'plan a lesson', href: '/library/use-ai-to-plan-a-lesson/' },
+  { label: 'write a tricky email', href: '/library/write-a-tricky-email/' },
+  { label: 'study for a test', href: '/library/ai-study-partner/' },
+  { label: 'plan a family trip', href: '/library/plan-a-family-trip/' },
+  { label: 'summarize a long document', href: '/library/summarize-a-long-document/' },
+  { label: 'make a budget', href: '/library/make-a-budget/' },
+];
+
+const guides = [
+  {
+    emoji: '🍎',
+    title: 'For Teachers',
+    href: '/guides/teachers/',
+    blurb: ['Plan lessons in minutes', 'Draft feedback that sounds like you', 'Differentiate without the late nights'],
+  },
+  {
+    emoji: '🏠',
+    title: 'For Parents',
+    href: '/guides/parents/',
+    blurb: ['Homework help that teaches', 'Plan trips, parties, and busy weeks', 'Learn alongside your kids'],
+  },
+  {
+    emoji: '💼',
+    title: 'For Small Business',
+    href: '/guides/business/',
+    blurb: ['Emails and proposals, faster', 'Marketing ideas on a budget', 'Get admin work off your plate'],
+  },
+];
+---
+
+<Base
+  title="how to talk to robots — plain-English answers to “how do I actually use AI?”"
+  description="Free guides and copy-paste prompts that help beginners use ChatGPT and Claude for real life — teaching, parenting, work, and everything in between. Built by educators and engineers."
+>
+  <div class="hero wrap">
+    <h1>how to talk to robots</h1>
+    <p class="tagline">Plain-English answers to “how do I actually use AI?”</p>
+
+    <SearchBar />
+
+    <ul class="chips">
+      <li class="lead" aria-hidden="true">Try:</li>
+      {chips.map((c) => (
+        <li><a class="chip" href={c.href}>{c.label}</a></li>
+      ))}
+    </ul>
+  </div>
+
+  <section class="section wrap" aria-labelledby="guides-heading">
+    <div class="section-head">
+      <h2 id="guides-heading">Top guides</h2>
+    </div>
+    <div class="grid-3">
+      {guides.map((g) => (
+        <article class="card guide-card">
+          <div class="emoji" aria-hidden="true">{g.emoji}</div>
+          <h3><a href={g.href}>{g.title}</a></h3>
+          <ul>
+            {g.blurb.map((b) => <li>{b}</li>)}
+          </ul>
+          <a class="card-link" href={g.href}>Read the guide</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="featured-heading">
+    <div class="section-head">
+      <h2 id="featured-heading">Start with these</h2>
+      <a href="/library/">Browse everything in the library</a>
+    </div>
+    <div class="grid-3">
+      {featured.map((entry) => <ResourceCard entry={entry} />)}
+    </div>
+  </section>
+</Base>

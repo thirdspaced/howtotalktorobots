@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ResourceCard from './ResourceCard.astro';
+import CopyBlock from './CopyBlock.astro';
+
+export interface TopTenItem {
+  title: string;
+  body: string;
+  prompt?: string;
+  link?: { href: string; label: string };
+}
+
+interface Props {
+  domain: 'teachers' | 'parents' | 'business';
+  title: string;
+  metaTitle: string;
+  description: string;
+  intro: string;
+  emoji: string;
+  items: TopTenItem[];
+}
+
+const { domain, title, metaTitle, description, intro, emoji, items } = Astro.props;
+
+const entries = (await getCollection('library'))
+  .filter((e) => !e.data.draft && e.data.domains.includes(domain))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: metaTitle,
+    description,
+    author: { '@type': 'Organization', name: 'how to talk to robots' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Top 10 ways to use ChatGPT & Claude — ${title}`,
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.title,
+    })),
+  },
+];
+---
+
+<Base title={metaTitle} description={description} schema={schema}>
+  <article class="prose section">
+    <p style="font-size: 2.4rem; margin: 0;" aria-hidden="true">{emoji}</p>
+    <h1>{title}</h1>
+    <p>{intro}</p>
+
+    <h2>The top 10 ways to use ChatGPT &amp; Claude</h2>
+    <ol class="steps top-ten">
+      {items.map((item) => (
+        <li>
+          <h3>{item.title}</h3>
+          <p set:html={item.body} />
+          {item.prompt && <CopyBlock text={item.prompt.trim()} />}
+          {item.link && (
+            <p>
+              <a href={item.link.href}>{item.link.label}</a>
+            </p>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    <h2>Go deeper</h2>
+  </article>
+
+  <div class="wrap" style="margin-top: 1rem;">
+    {entries.length > 0 ? (
+      <div class="grid-3">
+        {entries.map((entry) => <ResourceCard entry={entry} />)}
+      </div>
+    ) : (
+      <p>
+        Resources for this section are on the way.
+        <a href="/library/">Browse the full library</a> in the meantime.
+      </p>
+    )}
+  </div>
+
+  <div class="prose" style="margin-top: 2.5rem;">
+    <p>
+      New here? Start with
+      <a href="/library/socratic-thought-partner/">one prompt that changes how AI answers you</a>,
+      or <a href="/library/">browse everything in the library</a>.
+    </p>
+  </div>
+</Base>

@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CopyBlock from '../../components/CopyBlock.astro';
+import TagPill from '../../components/TagPill.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('library', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, domains, topics, type, prompt, date, updated, author } = entry.data;
+
+const isPromptLike = Boolean(prompt);
+const schema = isPromptLike
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: title,
+      description,
+      step: [
+        { '@type': 'HowToStep', name: 'Copy the prompt', text: 'Copy the prompt on this page.' },
+        { '@type': 'HowToStep', name: 'Paste it into an AI chatbot', text: 'Paste it into ChatGPT, Claude, or any AI chatbot.' },
+        { '@type': 'HowToStep', name: 'Answer its questions', text: 'Answer the questions it asks, one at a time, then refine the result together.' },
+      ],
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      author: { '@type': 'Person', name: author },
+      datePublished: date.toISOString(),
+      ...(updated ? { dateModified: updated.toISOString() } : {}),
+    };
+---
+
+<Base title={`${title} — how to talk to robots`} description={description} schema={[schema]}>
+  <article class="prose section">
+    <nav aria-label="Breadcrumb" style="font-size: var(--text-sm); margin-bottom: 1rem;">
+      <a href="/library/">← Back to the library</a>
+    </nav>
+
+    <h1>{title}</h1>
+
+    <div class="entry-meta">
+      <TagPill label={type} kind="type" />
+      {domains.filter((d) => d !== 'everyone').map((d) => <TagPill label={`for ${d}`} kind="domain" />)}
+      {topics.map((t) => <TagPill label={t} kind="topic" />)}
+    </div>
+
+    {prompt && <CopyBlock text={prompt.trim()} />}
+
+    <Content />
+
+    <hr style="border: none; border-top: 1px solid var(--card-line); margin: 2.5rem 0 1.5rem;" />
+    <p style="font-size: var(--text-sm); color: var(--ink-soft);">
+      Free to use and share. Have a better version?
+      <a href="/contribute/">Send it in</a> — this library is community-built.
+    </p>
+  </article>
+</Base>

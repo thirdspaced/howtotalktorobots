@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base
+  title="Search — how to talk to robots"
+  description="Search every guide, prompt, and framework on how to talk to robots."
+  index={false}
+>
+  <div class="prose section">
+    <h1>Search</h1>
+    <p>
+      Ask in your own words — “plan a lesson,” “tricky email,” “help my kid study.”
+    </p>
+    <div id="search-ui"></div>
+    <noscript>
+      <p>
+        Search needs JavaScript. You can also
+        <a href="/library/">browse the full library</a> — everything is there.
+      </p>
+    </noscript>
+  </div>
+
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof PagefindUI === 'undefined') return;
+      const ui = new PagefindUI({
+        element: '#search-ui',
+        showSubResults: true,
+        showImages: false,
+        translations: {
+          placeholder: 'how do I use AI to…',
+          zero_results: 'Nothing yet for “[SEARCH_TERM]” — try fewer words, or browse the library below.',
+        },
+      });
+      // Pre-fill from ?q= (homepage search bar submits here)
+      const q = new URLSearchParams(location.search).get('q');
+      if (q) ui.triggerSearch(q);
+    });
+  </script>
+
+  <style is:global>
+    /* Blend Pagefind UI into the design system */
+    :root {
+      --pagefind-ui-primary: var(--portal-blue);
+      --pagefind-ui-text: var(--ink);
+      --pagefind-ui-background: #ffffff;
+      --pagefind-ui-border: var(--card-line);
+      --pagefind-ui-border-width: 1px;
+      --pagefind-ui-border-radius: 10px;
+      --pagefind-ui-font: var(--font-body);
+    }
+  </style>
+
+  <div class="prose">
+    <p style="margin-top: 2rem;">
+      Prefer to wander? <a href="/library/">Browse everything in the library</a>.
+    </p>
+  </div>
+</Base>

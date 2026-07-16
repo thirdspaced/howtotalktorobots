@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import CopyBlock from '../components/CopyBlock.astro';
+
+const framework = (await getCollection('library')).find(
+  (e) => e.id === 'socratic-thought-partner'
+);
+const prompt = framework?.data.prompt ?? '';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'AI as a Socratic Thought Partner',
+  description:
+    'The Socratic Peerbot framework: how to use AI tools to challenge your mind, not replace it. Building critical thinking in an age of instant answers.',
+  author: { '@type': 'Person', name: 'Amanda Grutza' },
+};
+---
+
+<Base
+  title="The Socratic Peerbot — AI as a thought partner | how to talk to robots"
+  description="What if AI could make us smarter thinkers instead of making thinking optional? The Socratic Peerbot framework turns any chatbot into a patient, curious mentor."
+  schema={[schema]}
+>
+  <article class="prose section">
+    <h1>AI as a Socratic thought partner</h1>
+    <p style="font-size: var(--text-lg); color: var(--ink-soft);">
+      Building critical thinking in an age of instant answers.
+    </p>
+
+    <p>
+      What if AI could make us smarter thinkers instead of making thinking
+      optional? The Socratic Peerbot is a framework — and a ready-to-use AI
+      conversation model — that acts like a patient, curious mentor. Instead of
+      giving you finished answers, it asks you to clarify your ideas, challenge
+      your assumptions, and explain your reasoning.
+    </p>
+    <p>
+      You can use it in a classroom, in a studio, or at your desk to turn
+      ordinary tasks into deeper learning. It was designed by
+      <a href="https://amandagrutza.com">Amanda Grutza</a>, creative
+      technologist and founder of <a href="https://thirdspaced.com">Third Space</a>,
+      by combining neuroscience with Socratic teaching frameworks.
+    </p>
+
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li>
+        <h3>Clarify</h3>
+        <p>
+          The Peerbot starts every conversation with clarifying questions. It
+          wants to understand your goal before responding.
+        </p>
+      </li>
+      <li>
+        <h3>Reflect</h3>
+        <p>
+          It prompts you to explain your reasoning or make a prediction —
+          engaging your prefrontal cortex, the part of your brain that does the
+          deliberate thinking.
+        </p>
+      </li>
+      <li>
+        <h3>Iterate</h3>
+        <p>
+          You test your ideas, refine them, and learn through guided discovery.
+          The bot provides counterexamples and alternative perspectives.
+        </p>
+      </li>
+      <li>
+        <h3>Apply</h3>
+        <p>
+          You summarize what you learned and decide how to apply it. The
+          Peerbot can then generate prompts for review or next steps.
+        </p>
+      </li>
+    </ol>
+
+    <h2>The framework, ready to use</h2>
+    <p>
+      This works with ChatGPT, Claude, or any AI chatbot. Copy it, paste it in,
+      and describe what you're working on:
+    </p>
+
+    <CopyBlock text={prompt.trim()} />
+
+    <h2>For educators</h2>
+    <p>
+      Using this in a classroom or school? The framework pairs with
+      <a href="https://www.playlab.ai/project/cmai9lnsr04gjokihr8pc88cx"
+        >Codex, our modular digital-literacy program (opens on Playlab
+        <span aria-hidden="true">↗</span>)</a
+      >, and we run workshops on AI as a thought partner.
+      <a href="/contact/">Get in touch</a> to bring it to your school or team.
+    </p>
+  </article>
+</Base>

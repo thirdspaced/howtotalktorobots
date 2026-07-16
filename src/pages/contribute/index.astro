@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base
+  title="Contribute — how to talk to robots"
+  description="Submit a prompt or guide to the community library. How to Talk to Robots is open source and community-built."
+>
+  <article class="prose section">
+    <h1>Contribute</h1>
+    <p>
+      This library is community-built. If you've found a way to use AI that made
+      your work or life genuinely easier, someone else needs it too.
+    </p>
+    <h2>Two ways to send it in</h2>
+    <h3>The easy way</h3>
+    <p>
+      <a href="/contact/">Send us your prompt or idea</a> with a sentence or two
+      about when you use it. We'll edit it into the library format and credit you.
+    </p>
+    <h3>The open-source way</h3>
+    <p>
+      Every library entry is a markdown file in
+      <a href="https://github.com/thirdspaced/talktorobots">the public repository</a>.
+      Open a pull request adding a file to <code>src/content/library/</code> —
+      the template in the repo shows the format.
+    </p>
+    <h2>What makes a good entry</h2>
+    <ul>
+      <li>Titled as the question someone would actually ask ("How do I use AI to…")</li>
+      <li>A copy-paste prompt that asks the person questions, not just a command</li>
+      <li>A few sentences on when to use it and what to watch out for</li>
+    </ul>
+  </article>
+</Base>

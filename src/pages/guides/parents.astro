@@ -1,0 +1,67 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import type { TopTenItem } from '../../components/GuidePage.astro';
+
+const items: TopTenItem[] = [
+  {
+    title: `Coach homework you don't understand yourself`,
+    body: `The quiet crisis of modern homework: your kid's math is taught differently than yours was, and "let me just show you my way" makes it worse. Use AI to learn the method their school uses — so you can guide instead of confuse.`,
+    prompt: `My child is in [grade] and stuck on this problem: [type the problem]. Don't solve it for me. First, explain how this is typically taught at this grade level today — the method and vocabulary their teacher probably uses, even if it's different from how I learned it. Then give me three guiding questions I can ask my child to help them find the next step themselves, and tell me what a common mistake looks like at this stage so I can spot it.`,
+  },
+  {
+    title: 'Turn "AI did my homework" into "AI helped me learn"',
+    body: `Your kid is probably already using AI for schoolwork — a quarter of teens are, and the number is climbing. The move isn't banning it; it's redirecting it. This study-partner prompt makes the AI quiz them instead of answering for them.`,
+    link: { href: '/library/ai-study-partner/', label: 'Get the study-partner prompt →' },
+  },
+  {
+    title: 'Decode school documents in plain language',
+    body: `IEP paperwork, report card codes, district policy letters — school communication can read like a legal brief. AI is a patient translator. Blank out your child's name before pasting anything, and treat the explanation as a starting point for questions, not a verdict.`,
+    prompt: `I'm going to paste a document from my child's school with names removed. Explain it to me in plain language: what it actually says, what (if anything) it's asking me to do or decide, and any deadlines. Then give me a list of questions worth asking the school — especially about anything vague, and anything where I have a choice or a right I might not know about.`,
+  },
+  {
+    title: 'Have the AI talk — with your family',
+    body: `Every expert says "talk to your kids about AI." Nobody hands you the conversation. Sit down together, run this prompt, and let your kid catch the AI being wrong — the single best inoculation against trusting it blindly.`,
+    prompt: `My child ([age]) and I are exploring AI together for the first time. Introduce yourself honestly: explain in kid-friendly language what you are, how you work in one or two sentences, and — importantly — the ways you can be wrong or make things up. Then suggest a game: my child asks you questions about something they know a LOT about (their favorite game, show, or hobby) and tries to catch your mistakes. Play along and be honest when they catch you.`,
+  },
+  {
+    title: 'Set family AI rules — together, not top-down',
+    body: `Kids follow rules they helped write, and research backs this up: families that emphasize openness over punishment get kids who are far more honest about their AI use. Draft your household agreement as a three-way conversation.`,
+    prompt: `Help our family write a short AI agreement together. My kid(s) are [ages]. Ask us questions one at a time — some for the parents, some directed at the kids — about how we each use AI, what worries us, and what feels fair. Then draft a one-page family agreement in plain language covering: when AI is okay for schoolwork, when to tell each other we used it, and what we do when AI gets something wrong. Make it something a kid would actually agree to, with something the parents commit to as well.`,
+  },
+  {
+    title: 'Answer the questions you can\u2019t',
+    body: `"Why is the sky blue?" has a follow-up now: "but WHY does the light scatter?" AI is endlessly patient with the fifth why in a row — and it can explain at exactly your kid's level, twice, differently.`,
+    prompt: `My [age]-year-old asked: [the question]. Give me an explanation I can say out loud that's accurate but right for that age — no talking down, no jargon. Then give me a second, different way to explain it in case the first doesn't land (an analogy from everyday kid life), plus one follow-up question I can ask THEM to keep the curiosity going.`,
+  },
+  {
+    title: 'Support a kid who learns differently',
+    body: `For kids who struggle with big, vague tasks — "clean your room," "write your book report" — AI is very good at breaking overwhelming things into small, doable steps. Describe your kid generally; never paste their evaluations or records.`,
+    prompt: `My child ([age]) gets overwhelmed by multi-step tasks and tends to shut down when something feels too big. Help me break this down: [the task]. Turn it into small steps, each one concrete enough that they can't be "stuck" on it, with a natural break built in. Then suggest how I can present it — checklist, sticky notes, a timer game — and what to say when they stall, that isn't nagging.`,
+  },
+  {
+    title: 'Run the family logistics you never have time for',
+    body: `Meal plans around what's actually in the fridge, the birthday party, the week when three schedules collide. Not glamorous — but this is where AI quietly hands parents hours back.`,
+    link: { href: '/library/plan-a-family-trip/', label: 'Try it on the biggest one: the family-trip prompt →' },
+  },
+  {
+    title: 'Handle the paperwork of parenting',
+    body: `Insurance letters, camp forms, benefits enrollment, appealing a denied claim. AI reads bureaucratic language fluently and drafts firm, polite responses. Blank out account and policy numbers before pasting — details like that don't belong in a chatbot.`,
+    prompt: `I received this letter (identifying numbers removed): [paste it]. Tell me in plain language: what it says, whether it's asking me to do anything, what happens if I ignore it, and what my options are. If a response is needed, draft one that is polite, firm, and hard to dismiss — and tell me what to attach or keep a copy of.`,
+  },
+  {
+    title: 'Learn something alongside your kid',
+    body: `The most powerful AI lesson your kid can watch is you using it to learn — asking it questions, catching its mistakes, saying "let's check that." Pick something neither of you knows and let the AI be the tutor for both of you.`,
+    prompt: `My kid ([age]) and I want to learn about [topic] together — neither of us knows much. Be our shared tutor: teach us in small pieces, and after each piece give us one question to discuss with each other (not with you) before we continue. Mix in one hands-on thing we could try at home this week. Keep it fun — we're doing this at the kitchen table, not in a classroom.`,
+  },
+];
+---
+
+<GuidePage
+  domain="parents"
+  emoji="🏠"
+  title="AI for parents & families"
+  metaTitle="Top 10 uses of ChatGPT & Claude for parents — how to talk to robots"
+  description="Ten real uses of AI for family life: coaching homework you don't understand, decoding school paperwork, setting family AI rules together, and learning alongside your kids — with free copy-paste prompts."
+  intro="Most advice for parents about AI is either fear ('watch out for cheating') or fluff ('AI can help with homework!'). This list is neither. These are ten concrete ways parents actually use ChatGPT and Claude — including the ones nobody writes about: coaching homework taught differently than you learned it, translating school paperwork into plain English, and having the AI conversation with your kids instead of about them. No tech background needed."
+  items={items}
+/>

@@ -1,0 +1,71 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import type { TopTenItem } from '../../components/GuidePage.astro';
+
+const items: TopTenItem[] = [
+  {
+    title: 'Plan lessons that fit your actual classroom',
+    body: `Skip "write me a lesson plan" — you'll get something generic. Make the AI interview you about your students first, then draft with you. You stay the expert in the room.`,
+    link: { href: '/library/use-ai-to-plan-a-lesson/', label: 'Get the full lesson-planning prompt →' },
+  },
+  {
+    title: 'Work privacy-safe: never paste student data',
+    body: `Most districts now allow AI for planning but prohibit uploading student names, grades, or work. The habit that makes everything else on this list safe: anonymize before you paste. This prompt builds the workflow.`,
+    prompt: `Before we start: I'm a teacher and I will never share student names or identifying details with you. If I describe student work or situations, I'll use labels like "Student A." If I ever paste something that looks like it contains a real name or identifying detail, stop and warn me before responding. Confirm you understand, then ask what I'm working on today.`,
+  },
+  {
+    title: 'Give more feedback, in your voice, faster',
+    body: `The trap with AI feedback is that it all starts sounding the same — and students notice. Teach the AI how <em>you</em> talk to students first, then have it draft comments you edit rather than write.`,
+    prompt: `Help me write feedback on student work in my own voice. First, here are two examples of feedback I've written that sound like me: [paste 2 examples]. Study the tone, length, and how I balance praise with pushes.
+
+Now I'll describe each piece of student work (no names) and what I noticed. Draft feedback matching my voice: one specific strength, one specific next step, and one question that makes the student think. Keep each under 60 words.`,
+  },
+  {
+    title: 'Differentiate one lesson for the whole room',
+    body: `Take a lesson you've already built and adapt it — reading levels, scaffolds, extensions, accommodations — instead of building three lessons from scratch. Describe accommodations generically (e.g., "a student who needs chunked directions"), never from an actual IEP document.`,
+    prompt: `I'm going to paste a lesson I've already planned. Adapt it three ways: (1) a scaffolded version for students reading below grade level — same content, more support; (2) an extension for students who'll finish early — deeper, not just more; (3) a version with chunked directions and a visual checklist for students who need executive-function support. Keep my learning objective identical in all three, and tell me what you changed and why.`,
+  },
+  {
+    title: 'Communicate with every family — in their language',
+    body: `AI is quietly excellent at translating newsletters and updates into your families' home languages, including less common ones, with more cultural nuance than word-for-word translators. Always have a bilingual colleague or family liaison spot-check anything high-stakes.`,
+    prompt: `Translate this message to families into [language]. Keep the tone warm and respectful, adapt idioms so they make sense culturally rather than translating them literally, and keep the reading level accessible. After the translation, note in English anything you adapted and anything a native speaker should double-check.
+
+Message: [paste your message]`,
+  },
+  {
+    title: 'Redesign assignments instead of playing detective',
+    body: `AI detectors are unreliable, and the arms race is unwinnable. The teachers getting ahead are redesigning the work itself — assignments where AI use is either irrelevant or openly part of the process.`,
+    prompt: `Here's an assignment my students could currently complete with AI in five minutes: [paste assignment]. First, tell me what learning this assignment was actually checking. Then propose three redesigns: one that moves the thinking into class (discussion, defense, process), one that makes AI use openly part of the task with the student critiquing the AI's output, and one that anchors the work in something AI can't know — our class, our community, their own experience. For each, note what I'd be able to assess that I can't now.`,
+  },
+  {
+    title: 'Build interactive materials — no coding required',
+    body: `One of the most exciting findings in research on educators and AI: teachers describing an activity in plain language and getting a working interactive thing back — flashcard decks, review games, simulations, sorting activities. In Claude, ask for "an interactive artifact"; in ChatGPT, ask for "a single HTML file I can open in a browser."`,
+    prompt: `Build me an interactive review activity as a single HTML file (or artifact) for [topic, grade level]. It should work on a projector and on student devices, need no login and no internet after loading, use big readable text, and give friendly feedback on wrong answers instead of just "incorrect." Ask me 3 questions about my content before you build it.`,
+  },
+  {
+    title: 'Write sub plans in fifteen minutes, not two hours',
+    body: `The most stressful document in teaching, usually written while sick at 5 a.m. Do this once while healthy and save the result — future you will be grateful.`,
+    prompt: `Help me write emergency sub plans. Ask me one at a time: grade/subject, my class routines (arrival, transitions, dismissal), where materials are, which students need specific supports (described without names), and what we're working on this week. Then write plans a substitute who has never met my class could follow: a schedule with times, step-by-step activity directions, what to do if tech fails, and a short "about this class" note at the top.`,
+  },
+  {
+    title: 'Answer "when will we ever use this?" for real',
+    body: `A five-minute prep task with outsized payoff: real hooks, real careers, real local connections for whatever you're teaching — specific to your students' world, not a poster's.`,
+    prompt: `I'm teaching [topic] to [grade level] in [general region/community type]. Give me: three genuinely honest answers to "when will we ever use this?" (no stretches — if the honest answer is "you mostly won't directly, but here's what it trains," say that), two hooks connected to things my students actually encounter, and one person or job in a community like ours that uses this weekly. Skip anything that sounds like a motivational poster.`,
+  },
+  {
+    title: 'Teach your students to use AI as a thinking partner',
+    body: `The durable skill isn't prompting tricks — it's using AI to sharpen thinking instead of outsourcing it. The Socratic framework is a classroom-ready way to model that, and it works on any chatbot your students already use.`,
+    link: { href: '/peerbot/', label: 'The Socratic Peerbot: the full classroom framework →' },
+  },
+];
+---
+
+<GuidePage
+  domain="teachers"
+  emoji="🍎"
+  title="AI for teachers"
+  metaTitle="Top 10 uses of ChatGPT & Claude for teachers — how to talk to robots"
+  description="The ten uses of AI that give teachers real hours back — lesson planning, feedback in your voice, family communication in any language, sub plans, and assignment redesign — with free copy-paste prompts."
+  intro="You don't need to become a tech person, and you don't need another listicle about writing quizzes. These are the ten uses of ChatGPT and Claude that give teachers real hours back — including the ones most guides skip: working privacy-safe, keeping your own voice, and redesigning assignments instead of chasing AI detectors. Every prompt is free to copy. The AI drafts; you decide."
+  items={items}
+/>

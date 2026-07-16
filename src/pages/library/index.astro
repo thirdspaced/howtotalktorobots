@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import SearchBar from '../../components/SearchBar.astro';
+
+const entries = (await getCollection('library'))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const domains = ['teachers', 'parents', 'business', 'students'];
+const types = ['guide', 'prompt', 'framework', 'tool'];
+const topics = [...new Set(entries.flatMap((e) => e.data.topics))].sort();
+---
+
+<Base
+  title="Resource Library — how to talk to robots"
+  description="Every guide, copy-paste prompt, and framework in one place — tagged by topic, audience, and type. Free AI help for teachers, parents, small business, and the curious."
+>
+  <div class="wrap section">
+    <h1>The library</h1>
+    <p>
+      Every guide, prompt, and framework we have, in one place. Filter by who you
+      are or what you're trying to do — or <a href="/search/">search the whole site</a>.
+    </p>
+
+    <SearchBar showMascot={false} />
+
+    <div class="filters" id="filters">
+      <span style="align-self:center; font-size:var(--text-xs); color:var(--ink-soft);">Filter:</span>
+      <button type="button" data-filter="all" aria-pressed="true">Everything</button>
+      {domains.map((d) => (
+        <button type="button" data-filter={`domain:${d}`} aria-pressed="false">for {d}</button>
+      ))}
+      {types.map((t) => (
+        <button type="button" data-filter={`type:${t}`} aria-pressed="false">{t}s</button>
+      ))}
+      {topics.map((t) => (
+        <button type="button" data-filter={`topic:${t}`} aria-pressed="false">{t}</button>
+      ))}
+    </div>
+
+    <ul class="library-grid" id="library-grid">
+      {entries.map((entry) => (
+        <li>
+          <ResourceCard entry={entry} />
+        </li>
+      ))}
+    </ul>
+
+    <p id="no-results" hidden>
+      Nothing matches that filter yet. <a href="/contribute/">Suggest a resource</a>
+      and we'll write it.
+    </p>
+  </div>
+
+  <script>
+    // Progressive enhancement: without JS, the full library is visible.
+    const buttons = document.querySelectorAll<HTMLButtonElement>('#filters [data-filter]');
+    const items = document.querySelectorAll<HTMLLIElement>('#library-grid > li');
+    const empty = document.getElementById('no-results');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        const filter = btn.dataset.filter ?? 'all';
+        let visible = 0;
+
+        items.forEach((li) => {
+          const card = li.querySelector<HTMLElement>('.card');
+          if (!card) return;
+          let show = true;
+          if (filter !== 'all') {
+            const [kind, value] = filter.split(':');
+            const attr =
+              kind === 'domain' ? card.dataset.domains
+              : kind === 'topic' ? card.dataset.topics
+              : card.dataset.type;
+            show = (attr ?? '').split(' ').includes(value);
+          }
+          li.hidden = !show;
+          if (show) visible++;
+        });
+
+        if (empty) empty.hidden = visible > 0;
+      });
+    });
+  </script>
+</Base>

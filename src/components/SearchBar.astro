@@ -1,0 +1,73 @@
+---
+import Mascot from './Mascot.astro';
+
+interface Props {
+  showMascot?: boolean;
+}
+const { showMascot = true } = Astro.props;
+
+// Rotating placeholder questions — each models a well-formed prompt.
+const placeholders = [
+  'how do I use AI to plan lessons…',
+  'how do I use AI to write a tricky email…',
+  'how do I use AI to help my kid study…',
+  'how do I use AI to plan a family trip…',
+  'how do I use AI to summarize a long document…',
+  'how do I use AI to make a budget…',
+];
+---
+
+<div class="search-hero">
+  {showMascot && <Mascot />}
+  <search style="flex:1; display:contents;">
+    <form class="search-form" action="/search/" method="get" role="search">
+      <label class="sr-only" for="q" style="position:absolute; left:-9999px;">
+        Search guides and prompts
+      </label>
+      <input
+        type="search"
+        id="q"
+        name="q"
+        placeholder={placeholders[0]}
+        autocomplete="off"
+        data-placeholders={JSON.stringify(placeholders)}
+      />
+      <button type="submit">Search</button>
+    </form>
+  </search>
+</div>
+
+<script>
+  // Self-typing rotating placeholder. Decorative only — skipped entirely
+  // when the user prefers reduced motion or has started typing.
+  const input = document.getElementById('q') as HTMLInputElement | null;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (input && !reduced) {
+    const phrases: string[] = JSON.parse(input.dataset.placeholders || '[]');
+    let phrase = 0;
+    let char = 0;
+    let deleting = false;
+
+    const tick = () => {
+      if (document.activeElement === input || input.value) {
+        setTimeout(tick, 1200);
+        return;
+      }
+      const current = phrases[phrase] ?? '';
+      char += deleting ? -1 : 1;
+      input.placeholder = current.slice(0, char);
+      let delay = deleting ? 22 : 55;
+      if (!deleting && char === current.length) {
+        deleting = true;
+        delay = 2400;
+      } else if (deleting && char === 0) {
+        deleting = false;
+        phrase = (phrase + 1) % phrases.length;
+        delay = 350;
+      }
+      setTimeout(tick, delay);
+    };
+    setTimeout(tick, 900);
+  }
+</script>
