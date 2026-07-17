@@ -10,6 +10,5 @@ export default defineConfig({
     // Preserve old Wix slugs -> new homes (static meta-refresh pages)
     '/prompts': '/library',
     '/socraticai': '/peerbot',
-    '/blog': '/library',
   },
 });

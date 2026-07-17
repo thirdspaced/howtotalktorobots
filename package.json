@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.2.1",
     "@fontsource/ubuntu": "^5.1.0",
     "@fontsource/ubuntu-mono": "^5.1.0",

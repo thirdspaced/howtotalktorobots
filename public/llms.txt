@@ -12,6 +12,9 @@
 - [For Small Business](https://www.talktorobots.org/guides/business/): AI for emails, marketing, and admin work
 - [The Socratic Peerbot](https://www.talktorobots.org/peerbot/): a framework that turns any AI chatbot into a critical-thinking partner
 
+## Blog
+- [Blog](https://www.talktorobots.org/blog/): articles, ideas, and stories about using AI as a thinking partner
+
 ## About
 - [About](https://www.talktorobots.org/about/): mission, team, and how the site is built
 - [Contribute](https://www.talktorobots.org/contribute/): submit a prompt or guide

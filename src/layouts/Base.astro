@@ -15,10 +15,12 @@ interface Props {
   schema?: object[];
   /** Set false on utility pages (search, 404) */
   index?: boolean;
+  /** Override the canonical URL (for cross-posted content) */
+  canonicalUrl?: string;
 }
 
-const { title, description, schema = [], index = true } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const { title, description, schema = [], index = true, canonicalUrl } = Astro.props;
+const canonical = canonicalUrl ? new URL(canonicalUrl) : new URL(Astro.url.pathname, Astro.site);
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -57,6 +59,7 @@ const siteSchema = {
     {!index && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="how to talk to robots" href="/rss.xml" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="how to talk to robots" />

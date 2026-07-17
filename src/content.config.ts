@@ -20,4 +20,19 @@ const library = defineCollection({
   }),
 });
 
-export const collections = { library };
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
+    author: z.string().default('Amanda Grutza'),
+    tags: z.array(z.string()).default([]),
+    heroAlt: z.string().optional(),
+    draft: z.boolean().default(false),
+    canonical: z.string().optional(),
+  }),
+});
+
+export const collections = { library, blog };

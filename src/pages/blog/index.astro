@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import TagPill from '../../components/TagPill.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base
+  title="Blog — how to talk to robots"
+  description="Articles, ideas, and stories about using AI as a thinking partner — written in plain English for real people."
+>
+  <div class="wrap section">
+    <h1>Blog</h1>
+    <p>
+      Articles, ideas, and stories about using AI well. For ready-to-use prompts
+      and frameworks, visit the <a href="/library/">resource library</a>.
+    </p>
+
+    <div class="blog-grid">
+      {posts.map((post) => (
+        <article class="card">
+          <h3><a href={`/post/${post.id}/`}>{post.data.title}</a></h3>
+          <p>{post.data.description}</p>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
+            <span style="font-size: var(--text-xs); color: var(--ink-soft);">{fmt(post.data.date)}</span>
+            {post.data.tags.length > 0 && (
+              <div class="tags">
+                {post.data.tags.map((t) => (
+                  <a href={`/blog/tags/${t}/`} style="text-decoration: none;">
+                    <TagPill label={t} kind="topic" />
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1.1rem;
+    margin-top: 1.5rem;
+  }
+</style>

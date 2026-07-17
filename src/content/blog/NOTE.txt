@@ -1,0 +1,13 @@
+# Migration TODO
+
+The library has two draft entries that were originally Wix blog posts served at `/post/` URLs:
+
+- `how-to-make-ai-sound-human` — check Wix export for original slug
+- `ai-quick-start-guide` — check Wix export for original slug
+
+For each one, decide:
+1. Does it have external backlinks at `/post/<slug>`? If so, it should live here in
+   `/src/content/blog/` so it's served at `/post/<slug>`.
+2. If no backlinks, it can stay in `/src/content/library/` at `/library/<slug>`.
+
+Check Google Search Console and Wix analytics for inbound link data before deciding.

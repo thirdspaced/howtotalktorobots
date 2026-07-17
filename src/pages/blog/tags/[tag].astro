@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import TagPill from '../../../components/TagPill.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base
+  title={`Posts tagged "${tag}" — how to talk to robots`}
+  description={`Posts tagged "${tag}" — how to talk to robots. Plain-English AI guides, prompts, and frameworks.`}
+>
+  <div class="wrap section">
+    <nav aria-label="Breadcrumb" style="font-size: var(--text-sm); margin-bottom: 1rem;">
+      <a href="/blog/">← Back to the blog</a>
+    </nav>
+
+    <h1>Posts tagged "{tag}"</h1>
+
+    <div class="blog-grid">
+      {posts.map((post) => (
+        <article class="card">
+          <h3><a href={`/post/${post.id}/`}>{post.data.title}</a></h3>
+          <p>{post.data.description}</p>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
+            <span style="font-size: var(--text-xs); color: var(--ink-soft);">{fmt(post.data.date)}</span>
+            {post.data.tags.length > 0 && (
+              <div class="tags">
+                {post.data.tags.map((t) => (
+                  <a href={`/blog/tags/${t}/`} style="text-decoration: none;">
+                    <TagPill label={t} kind="topic" />
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1.1rem;
+    margin-top: 1.5rem;
+  }
+</style>
