@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import CopyBlock from '../components/CopyBlock.astro';
-import ResourceCard from '../components/ResourceCard.astro';
+import Base from '../../layouts/Base.astro';
+import CopyBlock from '../../components/CopyBlock.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
 
 const library = (await getCollection('library')).filter((e) => !e.data.draft);
 const pack = library
@@ -25,7 +25,7 @@ interface Case {
   learners: string;
   limitation: string;
   transfer: { href: string; label: string };
-  links?: { href: string; label: string }[];
+  links?: { href: string; label: string; internal?: boolean }[];
 }
 
 const cases: Case[] = [
@@ -48,7 +48,10 @@ const cases: Case[] = [
     limitation:
       'Game rules are invented. A seven-year-old can take an invented rule as history unless the teacher names the difference out loud, every time.',
     transfer: { href: '/library/decision-activity-or-project-support/', label: 'The decision activity prompt and template' },
-    links: [{ href: 'https://gold-rush-seven.vercel.app', label: 'Play the Gold Rush game' }],
+    links: [
+      { href: 'https://gold-rush-seven.vercel.app', label: 'Play the Gold Rush game' },
+      { href: '/library/build-your-own-historical-game/', label: 'How the game was built: the prompt playbook', internal: true },
+    ],
   },
   {
     id: 'waterways',
@@ -141,8 +144,8 @@ const schema = [
       Everything on this page is free to copy, adapt and share.
     </p>
     <p class="cta-row">
-      <a class="button" href="/library/classroom-project-setup-guide/">Start with the setup guide</a>
-      <a class="button secondary" href="#prompts">Jump to the prompts</a>
+      <a class="button" href="/library/teaching-thought-partner-setup/">Start with the setup</a>
+      <a class="button secondary" href="/edubuilds/prompts/">All 54 prompts</a>
     </p>
 
     <h2>The short version</h2>
@@ -166,13 +169,13 @@ const schema = [
     </div>
     <div class="grid-3">
       <article class="card guide-card">
-        <h3><a href="/library/classroom-project-setup-guide/">The setup guide</a></h3>
+        <h3><a href="/library/teaching-thought-partner-setup/">The teaching thought partner setup</a></h3>
         <ul>
-          <li>Set up a project space once, in any approved tool</li>
-          <li>One instruction block, one context card</li>
-          <li>What goes in and what never does</li>
+          <li>A Quick Start to paste into a Project or Gem in five minutes</li>
+          <li>A Teaching Profile that makes it fit how you teach</li>
+          <li>What to upload, what to keep out, how to test the checks</li>
         </ul>
-        <a class="card-link" href="/library/classroom-project-setup-guide/">Read the setup guide</a>
+        <a class="card-link" href="/library/teaching-thought-partner-setup/">Set up your planning partner</a>
       </article>
       <article class="card guide-card">
         <h3><a href="/library/classroom-build-card/">The build card</a></h3>
@@ -196,7 +199,7 @@ const schema = [
   </section>
 
   <article class="prose section">
-    <h2>The instruction block, if you only take one thing</h2>
+    <h2>The one-paragraph version, if you only take one thing</h2>
     <p>
       Paste this into the instructions of a project, Gem or notebook in whatever tool your
       school has approved. Fill in the square brackets. The last two sentences are the
@@ -204,8 +207,11 @@ const schema = [
     </p>
     <CopyBlock text={setupPrompt.trim()} label="Copy the instruction block" />
     <p style="font-size: var(--text-sm); color: var(--ink-soft);">
-      The full setup, including the context card and the two lists of what goes in and
-      what never does, is in <a href="/library/classroom-project-setup-guide/">the setup guide</a>.
+      This is the short on-ramp. The full
+      <a href="/library/teaching-thought-partner-setup/">teaching thought partner setup</a>
+      adds file checks, a style pass and a teacher check at the end of every resource; the
+      <a href="/library/classroom-project-setup-guide/">one-paragraph guide</a> explains the
+      context card and the two lists of what goes in and what never does.
     </p>
   </article>
 
@@ -239,7 +245,9 @@ const schema = [
           {c.links && (
             <p class="case-links">
               {c.links.map((l) => (
-                <a class="chip" href={l.href} rel="noopener">{l.label} <span aria-hidden="true">↗</span></a>
+                <a class="chip" href={l.href} rel={l.internal ? undefined : 'noopener'}>
+                  {l.label}{!l.internal && <span aria-hidden="true"> ↗</span>}
+                </a>
               ))}
             </p>
           )}
@@ -288,8 +296,8 @@ const schema = [
 
   <section class="wrap section" aria-labelledby="prompts-heading" id="prompts">
     <div class="section-head">
-      <h2 id="prompts-heading">The prompts</h2>
-      <a href="/library/">Browse the whole library</a>
+      <h2 id="prompts-heading">The prompts from the session</h2>
+      <a href="/edubuilds/prompts/">See all 54 prompts</a>
     </div>
     <p class="prose-note">
       Every prompt ends by asking the model what you should check before using the draft
@@ -299,12 +307,42 @@ const schema = [
       {prompts.map((entry) => <ResourceCard entry={entry} />)}
     </div>
     <div class="section-head" style="margin-top: 2rem;">
-      <h2 id="frameworks-heading">The cards</h2>
+      <h2 id="frameworks-heading">The guides and cards</h2>
     </div>
     <div class="grid-3">
       {frameworks.map((entry) => <ResourceCard entry={entry} />)}
     </div>
   </section>
+
+  <article class="prose section">
+    <h2>The full prompt library</h2>
+    <p>
+      Fifty-four prompts in eight groups: project setup and reusable context, spoken ideas
+      and research, adaptation and classroom artifacts, bulk data, family newsletters,
+      admin follow-through, student-note documentation, and independent student projects.
+      Each one works from your own files and ends with a teacher check.
+    </p>
+    <p class="cta-row">
+      <a class="button" href="/edubuilds/prompts/">Open the prompt library</a>
+      <a class="button secondary" href="/edubuilds/Educator_AI_Master_Prompts.xlsx" download>Download the spreadsheet</a>
+    </p>
+
+    <h2>Write like a person</h2>
+    <p>
+      Anything students, families or colleagues will read gets a style pass first. The
+      <a href="/library/tone-and-voice-style-guide-for-educators/">tone and voice style guide for educators</a>
+      is the file the setup prompts call for by name: plain words, no startup language, no
+      invented observations, and a six-check final pass. Fill in the Make it yours table, then
+      upload it to your Project.
+    </p>
+
+    <h2>Downloads</h2>
+    <ul>
+      <li><a href="/edubuilds/Teaching-Thought-Partner-Prompts.pdf">Teaching thought partner prompts (PDF)</a>, the Quick Start and the Teaching Profile</li>
+      <li><a href="/edubuilds/Tone-and-Voice-Style-Guide-for-Educators.pdf">Tone and voice style guide for educators (PDF)</a></li>
+      <li><a href="/edubuilds/Educator_AI_Master_Prompts.xlsx" download>Educator AI master prompts (.xlsx)</a>, all 54 prompts with a reading view</li>
+    </ul>
+  </article>
 
   <article class="prose section">
     <h2>Getting an account</h2>
@@ -331,10 +369,8 @@ const schema = [
     </ul>
 
     <div class="draft-note">
-      <strong>Coming to this page.</strong> The slide deck once it is final, a guide to making
-      a classroom game with an LLM (the spec-first method from the Gold Rush build), the prep
-      method behind the session, and the full prompt library. Check back after the summit,
-      or <a href="/contact/">ask to be told when it lands</a>.
+      <strong>Coming to this page.</strong> The slide deck, once it is final. Everything else
+      from the session is already here.
     </div>
 
     <h2>Bring this to your school</h2>

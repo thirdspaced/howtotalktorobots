@@ -1,10 +1,10 @@
 ---
-title: "Set up an AI project space for your classroom, and keep student data out of it"
-description: "One instruction block, one context card, and the two lists of what goes in and what never does. Works in Claude, ChatGPT, Gemini or whatever your school has approved."
+title: "The one-paragraph instruction block for a classroom AI project space"
+description: "The short on-ramp: one paragraph of instructions, one context card, and the two lists of what goes in and what never does. Works in Claude, ChatGPT, Gemini or whatever your school has approved."
 topics: [edubuilds, planning, privacy]
 domains: [teachers]
 type: guide
-featured: true
+featured: false
 date: 2026-10-24
 author: Amanda Grutza
 prompt: |
@@ -14,6 +14,8 @@ prompt: |
 ---
 
 Every classroom build I made this year needed a teacher change before it was usable, and most of those changes were the same change: the model did not know my class. It did not know which sound-spelling patterns we had taught, how long an activity could run, or that a seven-year-old reading around level L cannot use a science article written for adults. A project space fixes that once, so you stop re-explaining your classroom in every chat.
+
+This is the short version. When you have twenty minutes, the [teaching thought partner setup](/library/teaching-thought-partner-setup/) is the full one: it adds file checks, a style pass and a teacher check at the end of every resource, and a profile that makes the partner fit how you teach.
 
 ## What a project space is
 
