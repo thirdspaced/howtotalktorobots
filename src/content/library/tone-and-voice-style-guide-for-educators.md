@@ -1,6 +1,6 @@
 ---
-title: "Tone and voice style guide for educators: make AI drafts sound like a person"
-description: "Upload this to your AI Project and anything for colleagues, families or students gets a style pass: plain words, no hype, no invented observations, and a six-check final pass."
+title: "Tone and voice style guide for educators"
+description: "Upload this to your AI Project and anything for colleagues, families or students gets a style pass: plain words, no invented observations, and a six-check final pass before it leaves your hands."
 topics: [edubuilds, writing, communication]
 domains: [teachers]
 type: guide
@@ -295,4 +295,4 @@ The phrase lists and sample rewrites are editorial recommendations. These pages 
 - Jargon, Google developer documentation style guide: replacing or defining specialized terms for a wide audience.
 - Observe and describe the child's behavior to open communication with the family, Head Start: objective descriptions and asking families what they notice.
 
-This guide is part of [What survived the classroom](/edubuilds/). It is free to copy, adapt and share.
+Part of [What survived the classroom](/edubuilds/). Free to copy, adapt and share.

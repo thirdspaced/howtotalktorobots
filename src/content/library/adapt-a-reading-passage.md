@@ -1,6 +1,6 @@
 ---
 title: "Adapt a reading passage to one learner barrier without changing what it teaches"
-description: "Keep the learning target fixed and change the route to it. The prompt asks for defined terms, evidence questions, an answer key with source locations, and a list of what to check."
+description: "Keep the learning target and change the route to it. The prompt asks for defined terms, evidence questions, an answer key with source locations, and a list of what to check."
 topics: [edubuilds, reading, differentiation]
 domains: [teachers]
 type: prompt
@@ -12,23 +12,19 @@ prompt: |
   Source: [paste]
 ---
 
-This is the prompt behind the reading-access case in [What survived the classroom](/edubuilds/). The learning target stayed fixed (learners explain the relationship between a place and its water system) while the route to it changed: shorter chunks, defined terms, a read-aloud option, a cause-and-effect organizer.
+This is the prompt behind the reading-access build in [What survived the classroom](/edubuilds/). The learning target stayed the same (learners explain the relationship between a place and its water system) and the route to it changed: shorter chunks, defined terms, a read-aloud option, a cause-and-effect organizer.
 
-## Two different design tasks
+## Two different jobs
 
-Access to content and decoding practice are not the same job, and most AI reading advice blurs them.
+Access to content and decoding practice are different design tasks, and most AI reading advice blurs them.
 
-- **Access to content** changes the route to the idea. Short chunks, essential terms defined, a read-aloud option, an organizer. Your check: facts and causal links stay intact, and the final reasoning is not supplied.
-- **Decoding practice** uses only the sound-spelling patterns already taught. That is a separate text and a separate prompt: [decodable word practice](/library/decodable-word-practice/). Your check: every word, for pattern fit and exceptions.
+- **Access to content** changes the route to the idea: short chunks, essential terms defined, a read-aloud option, an organizer. Check that the facts and causal links are intact and that the draft doesn't supply the final reasoning.
+- **Decoding practice** uses only the sound-spelling patterns you've taught. That's a separate text and a separate prompt, [decodable word practice](/library/decodable-word-practice/). Check every word for pattern fit.
 
 ## What to check before you use it
 
 - The facts and the causal links survived the simplification.
-- The two questions require evidence from the text, not recall of the definitions.
-- The answer key points to real locations in the source.
-- No reading-level label is doing the work a human check should do. A model's "second-grade level" is a guess, not validation.
+- The two questions need evidence from the text, not recall of the definitions.
+- The answer key points to real places in the source.
 - The barrier is described as you observed it. The diagnosis never goes in the prompt.
-
-## What went wrong the first time
-
-The science sources I generated for a second-grade reading project came back too advanced for readers around level L. The packet looked finished. It was not usable. The fix was a simpler source set, each one checked against the readers it was for, and this prompt's last sentence.
+- No reading-level label is doing the work of a human check. A model's second-grade label is a guess.

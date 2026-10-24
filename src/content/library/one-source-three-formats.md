@@ -1,6 +1,6 @@
 ---
-title: "Turn one source into print, read-aloud, hands-on and interactive versions that share the same facts"
-description: "The multimodal prompt: four versions of one resource with one set of facts, and a list of every place the versions disagree."
+title: "Turn one source into four formats that share the same facts"
+description: "The multimodal prompt: a print passage, a read-aloud script, a hands-on organizer and a quiz spec from one source, plus a list of every place the versions disagree."
 topics: [edubuilds, planning, differentiation]
 domains: [teachers]
 type: prompt
@@ -12,7 +12,7 @@ prompt: |
   Source: [paste]
 ---
 
-The discipline in this prompt is the last sentence. Asking for four formats is easy. Holding one set of facts constant across them, and making the model report where the versions drift, is what separates it from "make me a slideshow."
+The last sentence of this prompt does the work. Four formats are easy to ask for. Making the model report every place the versions drift from each other, or from the source, is what keeps one set of facts across all four.
 
 ## Where it came from
 
@@ -20,11 +20,11 @@ The Gold Rush unit in [What survived the classroom](/edubuilds/) existed as a we
 
 ## For a bigger build
 
-The same prompt extends to a decision activity or a game. Ask for a one-page spec first (setting from the source, three choices, the consequence of each tied to a source fact, one invented rule labeled as invented, one question requiring evidence), review it, and only then ask for the interactive version. The [decision activity prompt](/library/decision-activity-or-project-support/) is the spec step.
+The same idea extends to a decision activity or a game. Ask for a one-page spec first, review it, then ask for the interactive version. The [decision activity prompt](/library/decision-activity-or-project-support/) is that spec step.
 
 ## What to check before you use it
 
-- The disagreement list at the end. Read it first; it tells you where the model guessed.
+- The disagreement list at the end. Read it first, since it tells you where the model guessed.
 - The organizer has prompts and no answers.
-- The check's "right option" is actually supported by the sentence it cites.
-- The read-aloud questions require evidence, not recall of the definitions.
+- The right option in each quiz question is supported by the sentence it cites.
+- The read-aloud questions need evidence, not recall of the definitions.

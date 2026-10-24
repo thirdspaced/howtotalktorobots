@@ -196,4 +196,4 @@ On top of the Quick Start checks, run these on every resource and report them in
 
 ## Where this came from
 
-This is the setup behind every build in [What survived the classroom](/edubuilds/). Want the shorter on-ramp first? The [one-paragraph instruction block](/library/classroom-project-setup-guide/) covers the same rules in a form you can read in a minute. The [full prompt library](/edubuilds/prompts/) holds 52 more prompts that assume this setup is in place.
+This is the setup behind [What survived the classroom](/edubuilds/). The [one-paragraph instruction block](/library/classroom-project-setup-guide/) is the short version, readable in a minute. The [full prompt library](/edubuilds/prompts/) has 52 more prompts that assume this setup is in place.

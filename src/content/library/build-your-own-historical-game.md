@@ -1,6 +1,6 @@
 ---
-title: "Build your own historical RPG with an AI coding assistant: the Gold Rush prompt playbook"
-description: "The exact sequence of seven prompts, and the iterative fixes, that built the Gold Rush (1849 San Francisco) classroom game. Swap in another era and reuse the engine."
+title: "Build your own historical game with an AI coding assistant"
+description: "The seven prompts, in order, that built the Gold Rush (1849 San Francisco) classroom game, with the fixes made along the way. Swap in another era and reuse the engine."
 topics: [edubuilds, projects, history, games]
 domains: [teachers]
 type: guide
@@ -8,15 +8,15 @@ date: 2026-10-24
 author: Amanda Grutza
 ---
 
-This guide breaks down the exact sequence of prompts and iterative adjustments used to build **Gold Rush (1849 San Francisco)**, the game second graders played in [What survived the classroom](/edubuilds/#gold-rush). You can [play it here](https://gold-rush-seven.vercel.app).
+These are the prompts, in order, that built **Gold Rush (1849 San Francisco)**, the game second graders played in [What survived the classroom](/edubuilds/#gold-rush). You can [play it here](https://gold-rush-seven.vercel.app).
 
-Whether you want to recreate the Gold Rush simulation or adapt the engine for another historical era (the Silk Road, the Oregon Trail, the Industrial Revolution), copy, paste and customize these prompts in sequence with an AI coding assistant. Bracketed text is where you swap in your own era, characters and reading level.
+To rebuild the Gold Rush game or adapt the engine for another era (the Silk Road, the Oregon Trail, the Industrial Revolution), copy, paste and customize these prompts in order with an AI coding assistant. Bracketed text is where you swap in your own era, characters and reading level.
 
-Before the first prompt, read the three tips at the end. The most important one: feed your historical research first, and tell the model to use only what you gave it. A game built straight from a prompt has facts nobody checked.
+Read the three tips at the end before you start, especially the one about feeding your research first.
 
 ## Phase 1: the core engine and retro aesthetic
 
-The first step is establishing the visual style, the target reading level, the diverse perspectives, and the core 30-day survival loop in a single React file.
+The first prompt sets the visual style, the reading level, the cast of perspectives, and the 30-day survival loop in a single React file.
 
 ### Prompt 1: building the base game
 
@@ -35,7 +35,7 @@ Game Flow:
 
 ## Phase 2: deep historical narrative and matrix events
 
-Once the basic loop works, a great educational game needs historical depth. This prompt turns background research (a historical dossier) into structured, weekly story popups tailored to both who the player is and how much money they have.
+Once the basic loop works, add the history. This prompt turns your background research into weekly story popups that depend on who the player is and how much money they have.
 
 ### Prompt 2: adding the narrative matrix
 
@@ -138,4 +138,4 @@ Build a two-part gameplay loop exclusively for this mode using its own separate 
 
 ## What to check before students play
 
-Everything the Gold Rush case card says still applies. Game rules are invented, and a seven-year-old can take an invented rule as history unless you name the difference out loud. Check which information came from your sources and which was made for play, review whose perspectives are in the cast and who is missing, and read every popup against your research before launch day. The [decision activity prompt](/library/decision-activity-or-project-support/) is the one-page spec step to run before you build anything interactive.
+Game rules are invented, and a seven-year-old will take an invented rule as history unless you name the difference out loud. Before launch day, sort which information came from your sources and which was made for play, look at whose perspectives are in the cast and who is missing, and read every popup against your research. The [decision activity prompt](/library/decision-activity-or-project-support/) is the one-page spec step to run before you build anything interactive.
