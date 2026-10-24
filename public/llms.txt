@@ -11,6 +11,7 @@
 - [For Parents](https://www.talktorobots.org/guides/parents/): AI for homework help, planning, and learning together
 - [For Small Business](https://www.talktorobots.org/guides/business/): AI for emails, marketing, and admin work
 - [The Socratic Peerbot](https://www.talktorobots.org/peerbot/): a framework that turns any AI chatbot into a critical-thinking partner
+- [Edu Builds: What Survived the Classroom](https://www.talktorobots.org/edubuilds/): three classroom AI builds, what the teacher changed before each worked, and the free setup guide, build card and prompt set from the Khan Lab School AI in Education Summit session
 
 ## Blog
 - [Blog](https://www.talktorobots.org/blog/): articles, ideas, and stories about using AI as a thinking partner
