@@ -23,7 +23,7 @@ interface Case {
   produced: string[];
   changed: string[];
   learners: string;
-  limitation: string;
+  watch: string;
   transfer: { href: string; label: string };
   links?: { href: string; label: string; internal?: boolean }[];
 }
@@ -33,24 +33,23 @@ const cases: Case[] = [
     id: 'gold-rush',
     kicker: 'Case 1',
     title: 'Gold Rush',
-    need: 'A San Francisco 1849 unit for seven- and eight-year-old readers around level M, where the biographies feed the play instead of sitting next to it.',
+    need: 'A San Francisco 1849 unit for seven- and eight-year-olds reading around level M, with the biographies built into the play.',
     produced: [
-      'An Oregon Trail-style Gold Rush game, built by talking to an LLM and tested with second graders',
-      'Group profiles of the 49ers, and biographies of historical figures including Mary Ellen Pleasant and Mifflin Wistar Gibbs',
-      'A bingo and scavenger hunt keyed to the biographies, and a Time Traveler field log for the stations',
+      'An Oregon Trail-style game, built by talking to an LLM and tested with second graders',
+      'Group profiles of the 49ers and biographies of people like Mary Ellen Pleasant and Mifflin Wistar Gibbs',
+      'A bingo, a scavenger hunt keyed to the biographies, and a Time Traveler field log for the stations',
     ],
     changed: [
-      'Every scavenger-hunt question checked against the biography text, so the answer was findable but not obvious',
-      'The generated biography pages debugged by hand before any child saw them',
-      'Fact, interpretation and game mechanic kept visibly separate, and the cast reviewed for who was missing',
+      'Checked every scavenger-hunt question against the biography text',
+      'Debugged the generated biography pages by hand before any child saw them',
+      'Kept fact, interpretation and game rule visibly separate, and reviewed the cast for who was missing',
     ],
-    learners: 'Learners played one decision at a time, read the biographies to answer the hunt, and said what information they used to choose.',
-    limitation:
-      'Game rules are invented. A seven-year-old can take an invented rule as history unless the teacher names the difference out loud, every time.',
+    learners: 'Played one decision at a time, read the biographies to answer the hunt, and said what information they used to choose.',
+    watch: 'Game rules are invented. Say so out loud every time, or a seven-year-old will remember them as history.',
     transfer: { href: '/library/decision-activity-or-project-support/', label: 'The decision activity prompt and template' },
     links: [
       { href: 'https://gold-rush-seven.vercel.app', label: 'Play the Gold Rush game' },
-      { href: '/library/build-your-own-historical-game/', label: 'How the game was built: the prompt playbook', internal: true },
+      { href: '/library/build-your-own-historical-game/', label: 'How the game was built', internal: true },
     ],
   },
   {
@@ -59,20 +58,18 @@ const cases: Case[] = [
     title: 'Waterways and the city systems unit',
     need: 'A place-based study of the first peoples of the San Francisco area and their relationships with water, for the same readers, inside a unit on how the city works.',
     produced: [
-      'Waterways of the First People, an interactive guide with knowledge packets and riddles, and a one-page water connections treasure hunt that sends learners back to it',
-      'A landmark design and reflection sheet with systems-thinking prompts, a Tinkercad design check, and a zine creator worksheet',
+      'Waterways of the First People, an interactive guide with knowledge packets and riddles, plus a one-page water connections treasure hunt that sends learners back to it',
+      'A landmark design and reflection sheet with systems-thinking prompts, a Tinkercad design check and a zine worksheet',
       'A San Francisco city systems quiz with an answer key',
     ],
     changed: [
-      'The first version read like a game. The framing was rewritten around relationships with water, with specific community names and community-authored sources where they exist',
-      'Every claim checked for time period, place, attribution and present-day continuity',
-      'The field study at Crane Cove became observe, do not collect',
+      'Rewrote the first version, which read like a game, around relationships with water, with specific community names and community-authored sources where they exist',
+      'Checked every claim for time period, place, attribution and whether the community is described in the present tense',
+      'Changed the Crane Cove field study to observe only, no collecting',
     ],
-    learners:
-      'Learners authored the systems explanations, the landmark models in Tinkercad and the zines. The AI-assisted pieces were the organizer, the source packet and the design check.',
-    limitation:
-      'A generated page about living communities needs a human check on every name and claim. The digital material only earns its place when it points learners back to local observation.',
-    transfer: { href: '/library/one-source-three-formats/', label: 'One source, several formats, same facts' },
+    learners: 'Wrote the systems explanations, built the landmark models in Tinkercad and made the zines. AI helped with the organizer, the source packet and the design check.',
+    watch: 'A generated page about living communities needs a human check on every name and claim. The digital pieces are there to send learners back outside to look.',
+    transfer: { href: '/library/one-source-three-formats/', label: 'One source, four formats, the same facts' },
     links: [
       { href: 'https://www.canva.com/d/eaRHLCZ-8QDo329', label: 'SF city systems quiz' },
       { href: 'https://www.canva.com/d/URwL4dDK83D44tl', label: 'Answer key' },
@@ -82,38 +79,21 @@ const cases: Case[] = [
     id: 'reading-access',
     kicker: 'Case 3',
     title: 'Reading access and daily word work',
-    need: 'Learners reading around level L who still need to explain the relationship between a place and its water system, plus daily word work for learners with IEPs and a research project comparing myths with informational texts.',
+    need: 'Learners reading around level L who still need to explain how a place and its water system are connected, daily word work for learners with IEPs, and a research project comparing myths with informational texts.',
     produced: [
-      'Customized reading passages and comprehension scaffolds, with the learning target held fixed',
+      'Customized reading passages and comprehension scaffolds, with the learning target unchanged',
       'Practice sets for ch and tch, ge and dge, long and short vowels, and homophones',
-      'A research poster organizer, an independent poster guide and a model poster, plus a five-minute reading check-in',
+      'A research poster organizer, an independent poster guide, a model poster and a five-minute reading check-in',
     ],
     changed: [
-      'The science sources that came back too advanced for level L readers were replaced with a simpler set, each one checked against the readers it was for',
-      'Every practice word checked against the taught patterns; a model’s reading-level label treated as a guess, never as validation',
-      'Barriers described as observed; diagnoses kept out of the prompt entirely',
+      'Replaced the science sources that came back too hard for level L readers with a simpler set, each one checked against the readers it was for',
+      'Checked every practice word against the taught patterns, and treated the model’s reading-level label as a guess',
+      'Described barriers as observed and kept diagnoses out of the prompt',
     ],
-    learners:
-      'The reading project ended in art, a written response and a recorded reading. The word work ran daily, from checked sets.',
-    limitation:
-      'Access to content and decoding practice are different design tasks. A prompt that blurs them produces a text that is neither.',
+    learners: 'The reading project ended in art, a written response and a recorded reading. The word work ran daily from checked sets.',
+    watch: 'Access to content and decoding practice are two different jobs. A prompt that mixes them gives you a text that does neither well.',
     transfer: { href: '/library/adapt-a-reading-passage/', label: 'The reading access prompt' },
   },
-];
-
-const costs = [
-  { task: 'Generated biography pages for the 1849 unit', status: 'Not responding', instead: 'Debugged by hand; hunt questions tied to text I had checked' },
-  { task: 'Science sources for the reading project', status: 'Too advanced', instead: 'Replaced with a simpler set, each checked against level L readers' },
-  { task: 'The first Waterways framing', status: 'Distorting the purpose', instead: 'Reframed around relationships with water, with named communities and their sources' },
-  { task: '“Second-grade reading level” labels', status: 'Unverified', instead: 'Treated as a guess; words checked against the taught patterns' },
-];
-
-const alsoAtSummit = [
-  { who: 'Kanishka Seth', what: 'step-by-step AI instructions on the assignments you already have' },
-  { who: 'Angela Chen', what: 'which model actually sits behind a classroom tool, and how to vet it' },
-  { who: 'Azade Sanjari', what: 'hint ladders and help that does not do the thinking' },
-  { who: 'Tiffany Wong', what: 'K-5 inclusive design with AI, grounded in UDL' },
-  { who: 'April Lehman, Anuja Agarwal and Natasha McKeown', what: 'NotebookLM as a source-grounded notebook for learning and school communication' },
 ];
 
 const schema = [
@@ -122,7 +102,7 @@ const schema = [
     '@type': 'Article',
     headline: 'What survived the classroom: real AI builds, tools and practices for educators',
     description:
-      'Three classroom builds made with LLMs, what the teacher had to change before each one worked, and the free setup guide, build card and prompt set from the Khan Lab School AI in Education Summit session.',
+      'Prompts, guides and three classroom builds from a year of making materials with LLMs for a second-grade reading group and enrichment classes, from the Khan Lab School AI in Education Summit session.',
     author: { '@type': 'Person', name: 'Amanda Grutza' },
     datePublished: '2026-10-24',
   },
@@ -131,17 +111,17 @@ const schema = [
 
 <Base
   title="Edu builds · What survived the classroom · how to talk to robots"
-  description="Three classroom AI builds, what the teacher had to change before each one worked, and the free setup guide, build card and prompts from the Khan Lab School AI in Education Summit session."
+  description="Prompts, guides and three classroom builds from a year of making materials with LLMs for a second-grade reading group and enrichment classes, from the Khan Lab School AI in Education Summit session."
   schema={schema}
 >
   <article class="prose section">
     <p class="kicker">Edu builds</p>
     <h1>What survived the classroom</h1>
     <p style="font-size: var(--text-lg); color: var(--ink-soft);">
-      Real AI builds, tools and practices for educators, from a year of building classroom
-      materials with LLMs for a second-grade reading group and enrichment classes in San
-      Francisco. Presented at the Khan Lab School AI in Education Summit, October 24, 2026.
-      Everything on this page is free to copy, adapt and share.
+      Prompts, guides and three classroom builds from a year of making materials with LLMs
+      for a second-grade reading group and enrichment classes in San Francisco. From my
+      session at the Khan Lab School AI in Education Summit, October 24, 2026. Free to copy,
+      adapt and share.
     </p>
     <p class="cta-row">
       <a class="button" href="/library/teaching-thought-partner-setup/">Start with the setup</a>
@@ -150,16 +130,13 @@ const schema = [
 
     <h2>The short version</h2>
     <p>
-      Over one school year I built 133 things with LLMs for one classroom: word study for
-      learners with IEPs, customized reading passages, scaffolded comprehension tools,
-      goal-setting chatbots, project guides, progress notes, full units. Three of those
-      builds are worth your time, and every one of them needed a teacher to change
-      something before it worked with children. That change is the content of this page.
+      Here are over 100 resources built for a few classroom domains: word study for learners
+      with IEPs, customized reading passages, scaffolded comprehension tools, goal-setting
+      chatbots, project guides, progress notes, and full unit outlines.
     </p>
     <p>
-      Nothing here needs a specific tool. Use whatever your school has approved, and if
-      your students cannot have accounts yet, the pattern still holds: the teacher prepares
-      and demonstrates, the students read, discuss, design, test and make.
+      None of these prompts or guides require a specific tool, use whatever your school has
+      approved.
     </p>
   </article>
 
@@ -172,17 +149,17 @@ const schema = [
         <h3><a href="/library/teaching-thought-partner-setup/">The teaching thought partner setup</a></h3>
         <ul>
           <li>A Quick Start to paste into a Project or Gem in five minutes</li>
-          <li>A Teaching Profile that makes it fit how you teach</li>
-          <li>What to upload, what to keep out, how to test the checks</li>
+          <li>A Teaching Profile for when you have twenty</li>
+          <li>What to upload, what to keep out, and how to test it</li>
         </ul>
         <a class="card-link" href="/library/teaching-thought-partner-setup/">Set up your planning partner</a>
       </article>
       <article class="card guide-card">
         <h3><a href="/library/classroom-build-card/">The build card</a></h3>
         <ul>
-          <li>Twelve minutes from a source to a checked draft</li>
+          <li>Twelve minutes from a source to a draft you've checked</li>
           <li>Three pathways: reading access, decision activity, project support</li>
-          <li>A definition of ready</li>
+          <li>What ready means</li>
         </ul>
         <a class="card-link" href="/library/classroom-build-card/">Get the build card</a>
       </article>
@@ -199,19 +176,17 @@ const schema = [
   </section>
 
   <article class="prose section">
-    <h2>The one-paragraph version, if you only take one thing</h2>
+    <h2>The one-paragraph setup</h2>
     <p>
-      Paste this into the instructions of a project, Gem or notebook in whatever tool your
-      school has approved. Fill in the square brackets. The last two sentences are the
-      ones that matter.
+      Paste this into the instructions of a Project, Gem or notebook in whatever tool your
+      school has approved, and fill in the brackets. Keep the last two sentences as they are.
     </p>
     <CopyBlock text={setupPrompt.trim()} label="Copy the instruction block" />
     <p style="font-size: var(--text-sm); color: var(--ink-soft);">
-      This is the short on-ramp. The full
-      <a href="/library/teaching-thought-partner-setup/">teaching thought partner setup</a>
-      adds file checks, a style pass and a teacher check at the end of every resource; the
-      <a href="/library/classroom-project-setup-guide/">one-paragraph guide</a> explains the
-      context card and the two lists of what goes in and what never does.
+      The full <a href="/library/teaching-thought-partner-setup/">teaching thought partner setup</a>
+      adds file checks, a style pass and a teacher check at the end of every resource. The
+      <a href="/library/classroom-project-setup-guide/">one-paragraph guide</a> covers what to
+      upload and what to keep out.
     </p>
   </article>
 
@@ -219,10 +194,6 @@ const schema = [
     <div class="section-head">
       <h2 id="cases-heading">Three builds, and what had to change</h2>
     </div>
-    <p class="prose-note">
-      Each case is told the same way: the classroom need, what AI helped produce, what the
-      teacher changed, what learners did, what transfers, and one honest limitation.
-    </p>
     <div class="cases">
       {cases.map((c) => (
         <article class="card case" id={c.id}>
@@ -231,16 +202,16 @@ const schema = [
           <dl>
             <dt>The classroom need</dt>
             <dd>{c.need}</dd>
-            <dt>What AI helped produce</dt>
+            <dt>What AI helped make</dt>
             <dd><ul>{c.produced.map((p) => <li>{p}</li>)}</ul></dd>
-            <dt>What the teacher changed</dt>
+            <dt>What I changed</dt>
             <dd><ul>{c.changed.map((p) => <li>{p}</li>)}</ul></dd>
             <dt>What learners did</dt>
             <dd>{c.learners}</dd>
-            <dt>What transfers</dt>
+            <dt>Take this with you</dt>
             <dd><a href={c.transfer.href}>{c.transfer.label}</a></dd>
-            <dt>One honest limitation</dt>
-            <dd>{c.limitation}</dd>
+            <dt>Watch for</dt>
+            <dd>{c.watch}</dd>
           </dl>
           {c.links && (
             <p class="case-links">
@@ -257,41 +228,19 @@ const schema = [
   </section>
 
   <article class="prose section">
-    <h2>The same five questions for every build</h2>
+    <h2>Five questions for every build</h2>
     <p>
-      This is the process behind the case cards, and the fields on the build card. Run it on
-      anything you will reuse, share or hand to another adult. A one-off morning message
-      does not need it.
+      These are the fields on the build card and the way each case above is written up. Use
+      them for anything you'll reuse, share or hand to another adult. A one-off morning
+      message doesn't need them.
     </p>
     <ol class="steps">
       <li><h3>What was the classroom need?</h3><p>A real task, a learner barrier or a missing resource.</p></li>
-      <li><h3>What did AI help produce?</h3><p>The original draft or build, the prompt, and the source it used.</p></li>
-      <li><h3>What did the teacher change?</h3><p>A visible correction, revision or design decision. This is where the value is.</p></li>
-      <li><h3>What did learners actually do?</h3><p>A de-identified work sample or a specific observation. Engagement, completion, understanding and independence are four different things; say which one you saw.</p></li>
-      <li><h3>What can another teacher transfer?</h3><p>A small template and a check for readiness. Plus one honest limitation.</p></li>
+      <li><h3>What did AI help make?</h3><p>The draft or build, the prompt, and the source it used.</p></li>
+      <li><h3>What did the teacher change?</h3><p>A correction, a revision or a design decision you can point to.</p></li>
+      <li><h3>What did learners do?</h3><p>A de-identified work sample or a specific observation. Engagement, completion, understanding and independence are four different things, so say which one you saw.</p></li>
+      <li><h3>What can another teacher take?</h3><p>A small template, a readiness check, and the limitation you found.</p></li>
     </ol>
-
-    <h2>Where the LLM cost more than it saved</h2>
-    <p>Four places from my own record, and what I did instead.</p>
-    <table class="costs">
-      <thead>
-        <tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">What I did instead</th></tr>
-      </thead>
-      <tbody>
-        {costs.map((row) => (
-          <tr>
-            <td>{row.task}</td>
-            <td class="status">{row.status}</td>
-            <td>{row.instead}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    <p>
-      <strong>Ready</strong> means: the key claims are checked, the task matches the learning
-      goal, the supports fit the barrier, and you can say what evidence you will look for.
-      One lesson then tests the resource. It does not prove a learning gain.
-    </p>
   </article>
 
   <section class="wrap section" aria-labelledby="prompts-heading" id="prompts">
@@ -317,10 +266,10 @@ const schema = [
   <article class="prose section">
     <h2>The full prompt library</h2>
     <p>
-      Fifty-four prompts in eight groups: project setup and reusable context, spoken ideas
-      and research, adaptation and classroom artifacts, bulk data, family newsletters,
-      admin follow-through, student-note documentation, and independent student projects.
-      Each one works from your own files and ends with a teacher check.
+      Fifty-four prompts in eight groups: project setup, spoken ideas and research,
+      adaptation and classroom artifacts, bulk data, family newsletters, admin
+      follow-through, student notes, and independent student projects. Each one works from
+      your own files and ends with a teacher check.
     </p>
     <p class="cta-row">
       <a class="button" href="/edubuilds/prompts/">Open the prompt library</a>
@@ -331,8 +280,7 @@ const schema = [
     <p>
       Anything students, families or colleagues will read gets a style pass first. The
       <a href="/library/tone-and-voice-style-guide-for-educators/">tone and voice style guide for educators</a>
-      is the file the setup prompts call for by name: plain words, no startup language, no
-      invented observations, and a six-check final pass. Fill in the Make it yours table, then
+      is the file the setup prompts call for by name. Fill in the Make it yours table, then
       upload it to your Project.
     </p>
 
@@ -347,39 +295,23 @@ const schema = [
   <article class="prose section">
     <h2>Getting an account</h2>
     <p>
-      If you teach K-12 in the United States, both
+      If you teach K-12 in the United States,
       <a href="https://www.anthropic.com/news/claude-for-teachers" rel="noopener">Claude for Teachers</a>
       and
       <a href="https://openai.com/index/chatgpt-for-teachers/" rel="noopener">ChatGPT for Teachers</a>
-      are free individual sign-ups for verified educators. Your school does not need to
-      enroll. Check your district's guidance on which tools are approved for planning before
-      you build, and keep student data out of all of them (the setup guide covers how).
+      are free individual sign-ups for verified educators, and your school doesn't need to
+      enroll. Check your district's guidance on approved tools before you build, and keep
+      student data out of all of them (the setup guide covers how).
     </p>
-
-    <h2>Also at the summit</h2>
-    <p>
-      This session left several things out on purpose, because other presenters at the
-      <a href="https://khanlabschool.org/AIED-sessions" rel="noopener">Khan Lab School AI in Education Summit</a>
-      covered them better than 45 minutes could:
-    </p>
-    <ul>
-      {alsoAtSummit.map((s) => (
-        <li><strong>{s.who}</strong> on {s.what}.</li>
-      ))}
-    </ul>
 
     <div class="draft-note">
-      <strong>Coming to this page.</strong> The slide deck, once it is final. Everything else
-      from the session is already here.
+      The slide deck will be added here once it's final.
     </div>
 
     <h2>Bring this to your school</h2>
     <p>
-      I run this as a hands-on workshop for schools and teams: real builds, a twelve-minute
-      build block, peer review, and a trial plan everyone leaves with.
-      <a href="/contact/">Get in touch</a>. And if you have a build that survived your own
-      classroom, <a href="/contribute/">send it in</a>. This library grows by what teachers
-      actually used.
+      <a href="/contact/">Get in touch</a> if you'd like to run this with your staff, and
+      <a href="/contribute/">send in</a> a build that survived your own classroom.
     </p>
   </article>
 </Base>
@@ -442,31 +374,6 @@ const schema = [
     gap: 0.5rem;
     margin: 1.1rem 0 0;
   }
-  .costs {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: var(--text-sm);
-    margin: 1rem 0 1.25rem;
-  }
-  .costs th,
-  .costs td {
-    text-align: left;
-    vertical-align: top;
-    padding: 0.55rem 0.6rem;
-    border-bottom: 1px solid var(--card-line);
-  }
-  .costs th {
-    font-size: var(--text-xs);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    font-weight: 700;
-  }
-  .costs .status {
-    color: var(--brick);
-    font-weight: 500;
-    white-space: nowrap;
-  }
   @media (max-width: 560px) {
     .case dl {
       grid-template-columns: 1fr;
@@ -474,9 +381,6 @@ const schema = [
     }
     .case dd {
       margin-bottom: 0.6rem;
-    }
-    .costs .status {
-      white-space: normal;
     }
   }
 </style>

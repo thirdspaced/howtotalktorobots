@@ -14,19 +14,19 @@ const all = prompts as Prompt[];
 
 const categoryNotes: Record<string, string> = {
   'A. Project setup and reusable context':
-    'Set up once, reuse everywhere. Start with 01 and 02 (or the fuller version on the teaching thought partner page), then use 03 to 07 at the start of each new piece of work.',
+    'Set up once and reuse. Start with 01 and 02 (or the fuller version on the teaching thought partner page), then use 03 to 07 at the start of each new piece of work.',
   'B. Spoken ideas, research, and planning':
-    'From a voice memo or a half-formed idea to a checked plan. 11 and 12 are research briefs written for a search-grounded tool such as Perplexity; 14 is written for Gemini.',
+    'From a voice memo or a half-formed idea to a checked plan. 11 and 12 are research briefs for a search-grounded tool like Perplexity. 14 is written for Gemini.',
   'C. Adaptation and classroom artifacts':
-    'The biggest set. Supported and stretch versions, decodable practice, worksheets and booklets, decision games, student-facing sites, slides, quizzes, Kahoot imports, audio and video explainers, and a final review before export.',
+    'The biggest group: supported and stretch versions, decodable practice, worksheets and booklets, decision games, student-facing sites, slides, quizzes, Kahoot imports, audio and video explainers, and a final review before export.',
   'D. Bulk data analysis and transfer':
-    'One careful prompt for spreadsheets. Fictional, non-sensitive or institution-approved inputs only.',
+    'One careful prompt for spreadsheets. Use fictional, non-sensitive or school-approved data only.',
   'E. Newsletters and optional home connections':
     'Family-facing writing from a confirmed recap, in your voice, with no invented reactions, outcomes or quotes.',
   'F. Personal assistants and administrative follow-through':
-    'Assistant prompts that draft and organize but never send, schedule, purchase or delete without your explicit say-so.',
+    'Assistant prompts that draft and organize. They never send, schedule, buy or delete anything without your say-so.',
   'G. Student-note demonstration':
-    'A fictional documentation demonstration. Structure an observation without inventing motives, diagnoses or labels.',
+    'A fictional documentation example. Structure an observation without inventing motives, diagnoses or labels.',
   'H. Independent student projects':
     'Planning partner instructions for project-based courses, a profile to make them yours, and a session planner.',
 };
@@ -67,8 +67,8 @@ const schema = [
     <h1>The educator AI prompt library</h1>
     <p style="font-size: var(--text-lg); color: var(--ink-soft);">
       {all.length} prompts in eight groups, from setting up a planning partner to writing the
-      family newsletter. Every one of them assumes you make the final call, works from your
-      own files, and ends by telling you what to check.
+      family newsletter. Each one works from your own files and ends with a teacher check.
+      You make the final call.
     </p>
     <p>
       Replace anything in square brackets with your own context. Most prompts expect the
@@ -105,19 +105,18 @@ const schema = [
   })}
 
   <article class="prose section">
-    <h2>How these were made</h2>
+    <h2>Where these came from</h2>
     <p>
-      These prompts came out of a year of building classroom materials with LLMs for a
-      second-grade reading group and enrichment classes in San Francisco, then cleaning up
-      what survived. The three cases behind them, and what had to change before each was
-      usable, are on the <a href="/edubuilds/">Edu builds</a> page. Anything students,
+      A year of making classroom materials with LLMs for a second-grade reading group and
+      enrichment classes in San Francisco, then cleaning up what survived. The three builds
+      behind them are on the <a href="/edubuilds/">Edu builds</a> page. Anything students,
       families or colleagues will read gets a pass with the
       <a href="/library/tone-and-voice-style-guide-for-educators/">tone and voice style guide</a>
       first.
     </p>
     <p>
-      Free to use and share. Have a prompt that survived your own classroom?
-      <a href="/contribute/">Send it in</a>.
+      Free to use and share. If a prompt survived your own classroom,
+      <a href="/contribute/">send it in</a>.
     </p>
   </article>
 </Base>

@@ -12,7 +12,7 @@ prompt: |
   Directions: [paste]
 ---
 
-Scaffolds are where an AI draft most often does the learner's work for them. These six prompts are short so that there is nowhere for that to hide. Copy the one you need; the first is above, the other five are below.
+Scaffolds are where an AI draft most often ends up doing the learner's work. These six prompts are short on purpose, so an answer sneaking in is easy to spot. The first is above and the other five are below. Copy the one you need.
 
 ## Sentence frames that point to the text
 
@@ -55,8 +55,8 @@ Organizer: [paste]
 
 ## What to check before you use any of them
 
-- The learner's thinking is still the learner's. If a frame, a card or an organizer contains the answer, send it back.
+- The thinking is still the learner's. If a frame, a card or an organizer contains the answer, send it back.
 - Every example sentence and every fact traces to the source you gave.
-- The reading demand of the scaffold is not higher than the text it supports.
+- The scaffold isn't harder to read than the text it supports.
 
-These come from the reading-access case in [What survived the classroom](/edubuilds/). The supports that held up in class all had one thing in common: the teacher could say exactly what the learner still had to do.
+These come from the reading-access build in [What survived the classroom](/edubuilds/). The test for each one is whether you can say exactly what the learner still has to do.
