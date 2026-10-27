@@ -1,0 +1,312 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CopyBlock from '../../components/CopyBlock.astro';
+
+const REPO = 'https://github.com/thirdspaced/talktorobotsstyleguide';
+
+const library = await getCollection('library');
+const core = library.find((e) => e.id === 'llm-style-guide');
+const corePrompt = core?.data.prompt ?? '';
+
+interface Edition {
+  name: string;
+  page: string;
+  file: string;
+  bestFor: string[];
+  adds: string;
+}
+
+const editions: Edition[] = [
+  {
+    name: 'Core',
+    page: '/library/llm-style-guide/',
+    file: '/style-guide/llm-style-guide-v3.md',
+    bestFor: ['Emails and messages', 'Social posts and newsletters', 'Bios, web pages, and instructions'],
+    adds: 'The full rule set for everyday writing, with general writing modes and examples.',
+  },
+  {
+    name: 'Business',
+    page: '/library/llm-style-guide-business/',
+    file: '/style-guide/llm-style-guide-v3-business.md',
+    bestFor: ['LinkedIn and professional accounts', 'Website, service copy, and case studies', 'Proposals, client email, and listings'],
+    adds: 'Startup language to rewrite, business claims that need proof, and calls to action that serve the reader.',
+  },
+  {
+    name: 'Tech',
+    page: '/library/llm-style-guide-tech/',
+    file: '/style-guide/llm-style-guide-v3-tech.md',
+    bestFor: ['Explainers and news roundups', 'Tool reviews and release notes', 'Setup docs and security notices'],
+    adds: 'Rules for news, AI features, and security copy, plus a tech hype table.',
+  },
+  {
+    name: 'Education',
+    page: '/library/tone-and-voice-style-guide-for-educators/',
+    file: '/style-guide/llm-style-guide-v3-education.md',
+    bestFor: ['Lesson materials and directions', 'Student feedback', 'Family newsletters and staff messages'],
+    adds: 'School terms, three school audiences, and rules against inventing student observations or progress.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'The LLM style and copy guide, version 3',
+    description:
+      'Free writing rules you give to ChatGPT, Claude, or Gemini so AI drafts sound like a person wrote them. Core, business, tech, and education editions.',
+    author: { '@type': 'Person', name: 'Amanda Grutza' },
+    datePublished: '2026-10-26',
+    license: 'https://opensource.org/licenses/MIT',
+  },
+];
+---
+
+<Base
+  title="LLM style and copy guide, version 3 · how to talk to robots"
+  description="Free writing rules you give to ChatGPT, Claude, or Gemini so AI drafts sound like a person wrote them. Core, business, tech, and education editions, open source on GitHub."
+  schema={schema}
+>
+  <article class="prose section">
+    <p class="kicker">Style guide · Version 3</p>
+    <h1>The LLM style and copy guide</h1>
+    <p class="lead">
+      A free set of writing rules you give to ChatGPT, Claude, Gemini, or any other AI chatbot.
+      Upload it once, and the drafts that come back use plain words, keep your facts, and drop
+      the habits that make people stop reading.
+    </p>
+    <p class="cta-row">
+      <a class="button" href="#editions">Pick an edition</a>
+      <a class="button secondary" href={REPO} rel="noopener">See it on GitHub <span aria-hidden="true">↗</span></a>
+    </p>
+
+    <h2>What it's for</h2>
+    <p>
+      Ask an AI tool for a post or an email and the first draft usually shows the same habits:
+      em dashes everywhere, "delve" and "seamless," a cheerful intro, three tidy bullets, a
+      recap of what you just read, and sometimes a number nobody measured. Readers notice, even
+      when they can't say what's off.
+    </p>
+    <p>
+      The guide tells the model which words and sentence patterns to avoid, what to write
+      instead, and how to run a six-check final pass before it hands the draft back. It's just as
+      strict about what to keep: the facts, the limits, the exact names and button labels, and
+      the next step your reader needs.
+    </p>
+
+    <div class="before-after" aria-label="Before and after example">
+      <figure class="card">
+        <figcaption>Before</figcaption>
+        <p>"AI isn't just a tool. It's your unfair advantage. The people who embrace it today will be the ones leading tomorrow. Let that sink in."</p>
+      </figure>
+      <figure class="card after">
+        <figcaption>After the style pass</figcaption>
+        <p>"Before adding AI to your week, pick the one task you want to change. Drafting a reply from meeting notes is a specific task. 'Be more productive' is too broad to test. Try it for a week and notice how much editing the drafts still need."</p>
+      </figure>
+    </div>
+
+    <p>
+      It's an editing standard. It isn't an AI detector, and its word lists aren't proof that
+      someone used AI. Plenty of people wrote "delve" long before chatbots did.
+    </p>
+
+    <h2>Who can use it</h2>
+    <p>
+      Anyone who uses an AI tool to draft something they'll send under their own name or their
+      organization's name. You don't need to be technical. If you can upload a file to a chat,
+      you can use it. It was written with these readers in mind:
+    </p>
+    <ul>
+      <li>Small business owners, freelancers, and anyone writing for a professional account (<a href="/library/llm-style-guide-business/">business edition</a>)</li>
+      <li>People who write about technology: newsletters, reviews, release notes, docs, security notices (<a href="/library/llm-style-guide-tech/">tech edition</a>)</li>
+      <li>Teachers and school staff writing for students, families, and colleagues (<a href="/library/tone-and-voice-style-guide-for-educators/">education edition</a>)</li>
+      <li>Everyone else who wants their email or post to sound like them (<a href="/library/llm-style-guide/">core edition</a>)</li>
+    </ul>
+  </article>
+
+  <section class="wrap section" aria-labelledby="editions-heading" id="editions">
+    <div class="section-head">
+      <h2 id="editions-heading">Pick your edition</h2>
+    </div>
+    <p class="prose-note">
+      Every edition is complete on its own. Choose the one closest to what you write most and
+      upload that single file.
+    </p>
+    <div class="grid-editions">
+      {editions.map((e) => (
+        <article class="card guide-card edition">
+          <p class="kicker">Version 3</p>
+          <h3><a href={e.page}>{e.name}</a></h3>
+          <ul>
+            {e.bestFor.map((b) => <li>{b}</li>)}
+          </ul>
+          <p>{e.adds}</p>
+          <p class="edition-links">
+            <a class="card-link" href={e.page}>Read it</a>
+            <a class="chip" href={e.file} download>Download .md</a>
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <article class="prose section">
+    <h2>How to use it</h2>
+    <ol class="steps">
+      <li>
+        <h3>Fill in Make it yours</h3>
+        <p>
+          The table near the top of each edition sets whose voice it is, who reads it, three words
+          for how you want to sound, and the words you never want to see. Anything you leave blank
+          falls back to the defaults.
+        </p>
+      </li>
+      <li>
+        <h3>Upload it to a project</h3>
+        <p>
+          Add the file to a Claude Project, a ChatGPT Project or custom GPT, or a Gemini Gem. If
+          your tool doesn't have projects, paste it into custom instructions or at the start of a
+          chat.
+        </p>
+      </li>
+      <li>
+        <h3>Start each task with the instruction</h3>
+        <p>
+          Every edition ends with a starter instruction. Fill in the brackets and paste it in with
+          your notes. Here's the core version:
+        </p>
+      </li>
+    </ol>
+    <CopyBlock text={corePrompt.trim()} label="Copy the starter instruction" />
+    <ol class="steps" start="4" style="counter-reset: step 3;">
+      <li>
+        <h3>Read the draft yourself</h3>
+        <p>
+          The final pass catches patterns. It can't check your facts, your dates, or whether the
+          story in the draft really happened. That part stays with you.
+        </p>
+      </li>
+    </ol>
+
+    <h2>What's in every edition</h2>
+    <ul>
+      <li>A Make it yours table for your voice, audience, and house terms</li>
+      <li>Rules for behavior, thinking, mechanics, openings, and closings</li>
+      <li>Words and sentence patterns to avoid, with plain replacements</li>
+      <li>Evidence rules: no invented numbers, quotes, testing, or results</li>
+      <li>Cadence, tone, and format notes for the places you publish</li>
+      <li>Worked before-and-after examples</li>
+      <li>A six-check final pass and a starter instruction</li>
+    </ul>
+    <p>
+      Each file also starts with skill frontmatter, so you can drop it into a folder, rename it
+      <code>SKILL.md</code>, and use it as a Claude skill.
+    </p>
+
+    <h2>Version history</h2>
+    <dl class="versions">
+      <dt>Version 3, October 2026</dt>
+      <dd>
+        Four editions (core, business, tech, education), the Make it yours table, format notes for
+        each place you publish, stricter evidence rules, expanded phrase tables, and new worked
+        examples.
+      </dd>
+      <dt>Version 2, July 2026</dt>
+      <dd>
+        Sentence-pattern bans, rules against reflexive praise and "I hope this helps," evidence
+        rules, a longer vocabulary list, and the six-check final pass.
+      </dd>
+    </dl>
+    <p>The full list of changes is in the <a href={`${REPO}/blob/main/CHANGELOG.md`} rel="noopener">changelog</a>.</p>
+
+    <h2>Free and open source</h2>
+    <p>
+      The guide is MIT licensed. Copy it, adapt it, and put your name on your version. If you
+      find a pattern it misses, or a rule that gets in the way of good writing,
+      <a href={`${REPO}/issues`} rel="noopener">open an issue on GitHub</a> or
+      <a href="/contribute/">send it in here</a> with an example and a rewrite. A preference
+      that's only yours belongs in your own Make it yours table.
+    </p>
+  </article>
+</Base>
+
+<style>
+  .kicker {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brick);
+    margin: 0 0 0.35rem;
+  }
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--ink-soft);
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.25rem 0 0.5rem;
+  }
+  .prose-note {
+    color: var(--ink-soft);
+    margin: 0 0 1.1rem;
+  }
+  .before-after {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 1.25rem;
+  }
+  .before-after figure {
+    margin: 0;
+  }
+  .before-after figcaption {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+  .before-after p {
+    font-size: var(--text-base, 1rem);
+    margin: 0;
+  }
+  .before-after .after {
+    border-top: 3px solid var(--stamp-green);
+  }
+  .before-after .after figcaption {
+    color: var(--stamp-green);
+  }
+  .grid-editions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
+    gap: 1rem;
+  }
+  .edition p:not(.kicker):not(.edition-links) {
+    flex: 1;
+  }
+  .edition-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.5rem 0 0 !important;
+  }
+  .edition-links .card-link {
+    margin-top: 0;
+  }
+  .versions {
+    margin: 0.75rem 0 1rem;
+  }
+  .versions dt {
+    font-weight: 700;
+    margin-top: 0.75rem;
+  }
+  .versions dd {
+    margin: 0.25rem 0 0;
+    max-width: var(--measure);
+  }
+</style>
