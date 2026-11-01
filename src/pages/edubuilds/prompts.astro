@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CopyBlock from '../../components/CopyBlock.astro';
+import Byline from '../../components/Byline.astro';
 import prompts from '../../data/educator-prompts.json';
 
 interface Prompt {
@@ -50,6 +51,8 @@ const schema = [
       '54 copy-paste prompts for teachers, grouped by task: project setup, planning and research, adaptation and classroom artifacts, data, family newsletters, admin follow-through, student notes and independent projects.',
     numberOfItems: all.length,
     itemListElement: all.map((p) => ({ '@type': 'ListItem', position: p.no, name: p.title })),
+    author: { '@type': 'Person', name: 'Amanda Grutza' },
+    datePublished: '2026-10-24',
   },
 ];
 ---
@@ -65,6 +68,7 @@ const schema = [
     </nav>
     <p class="kicker">Edu builds</p>
     <h1>The educator AI prompt library</h1>
+    <Byline date="2026-10-24" />
     <p style="font-size: var(--text-lg); color: var(--ink-soft);">
       {all.length} prompts in eight groups, from setting up a planning partner to writing the
       family newsletter. Every one of them assumes you make the final call, works from your

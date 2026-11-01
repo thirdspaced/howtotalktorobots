@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import CopyBlock from '../../components/CopyBlock.astro';
 import ResourceCard from '../../components/ResourceCard.astro';
+import Byline from '../../components/Byline.astro';
 
 const library = (await getCollection('library')).filter((e) => !e.data.draft);
 const pack = library
@@ -137,6 +138,7 @@ const schema = [
   <article class="prose section">
     <p class="kicker">Edu builds</p>
     <h1>What survived the classroom</h1>
+    <Byline date="2026-10-24" />
     <p style="font-size: var(--text-lg); color: var(--ink-soft);">
       Real AI builds, tools and practices for educators, from a year of building classroom
       materials with LLMs for a second-grade reading group and enrichment classes in San

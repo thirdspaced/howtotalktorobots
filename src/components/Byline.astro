@@ -1,0 +1,56 @@
+---
+// Visible author + date line for articles, guides and hub pages.
+// Dates come from content frontmatter (or a page constant) so the
+// visible date and the JSON-LD datePublished always match.
+interface Props {
+  author?: string;
+  date: Date | string;
+  updated?: Date | string;
+}
+
+const { author = 'Amanda Grutza', date, updated } = Astro.props;
+
+const toDate = (d: Date | string) => (d instanceof Date ? d : new Date(d));
+const fmt = (d: Date | string) =>
+  toDate(d).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+const iso = (d: Date | string) => toDate(d).toISOString().slice(0, 10);
+
+const authorLinks: Record<string, string> = {
+  'Amanda Grutza': 'https://amandagrutza.com',
+};
+const authorHref = authorLinks[author];
+---
+
+<p class="byline">
+  By{' '}
+  {authorHref ? (
+    <a href={authorHref} rel="author">{author}</a>
+  ) : (
+    <span>{author}</span>
+  )}
+  {' · '}
+  <time datetime={iso(date)}>{fmt(date)}</time>
+  {updated && (
+    <span>
+      {' · Updated '}
+      <time datetime={iso(updated)}>{fmt(updated)}</time>
+    </span>
+  )}
+</p>
+
+<style>
+  .byline {
+    font-size: var(--text-sm);
+    color: var(--ink-soft);
+    margin: 0.25rem 0 0.5rem;
+  }
+  .byline a {
+    color: inherit;
+    font-weight: 600;
+  }
+</style>
