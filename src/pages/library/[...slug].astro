@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import CopyBlock from '../../components/CopyBlock.astro';
 import TagPill from '../../components/TagPill.astro';
+import Byline from '../../components/Byline.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('library', ({ data }) => !data.draft);
@@ -23,6 +24,9 @@ const schema = isPromptLike
       '@type': 'HowTo',
       name: title,
       description,
+      author: { '@type': 'Person', name: author },
+      datePublished: date.toISOString(),
+      ...(updated ? { dateModified: updated.toISOString() } : {}),
       step: [
         { '@type': 'HowToStep', name: 'Copy the prompt', text: 'Copy the prompt on this page.' },
         { '@type': 'HowToStep', name: 'Paste it into an AI chatbot', text: 'Paste it into ChatGPT, Claude, or any AI chatbot.' },
@@ -47,6 +51,8 @@ const schema = isPromptLike
     </nav>
 
     <h1>{title}</h1>
+
+    <Byline author={author} date={date} updated={updated} />
 
     <div class="entry-meta">
       <TagPill label={type} kind="type" />
