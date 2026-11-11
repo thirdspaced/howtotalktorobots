@@ -26,7 +26,7 @@ This is the complete working guide, not a shortened prompt. Fill in Make it your
 
 The phrase lists are editorial preferences, not a way to decide whether a person used AI. A word or sentence pattern can be right in a precise context. Every example rewrite in this guide is illustrative, not a report about a real product, release, or test. Verify or replace its details before you publish.
 
-[Download this guide as a Markdown file](/style-guide/llm-style-guide-v3-tech.md), fill in Make it yours, and upload it to your AI project. The instruction above goes into the chat with your notes. Every edition is on the [style guide page](/style-guide/) and on [GitHub](https://github.com/thirdspaced/talktorobotsstyleguide).
+[Download this guide as a Markdown file](/style-guide/llm-style-guide-v3-tech.md), fill in Make it yours, and upload it to your AI project. The instruction above goes into the chat with your notes. Every edition is on the [style guide page](/style-guide/) and on [GitHub](https://github.com/thirdspaced/styleguideskill).
 
 ## Make it yours
 
@@ -411,4 +411,6 @@ Version 3 builds on version 2 of the LLM style and copy guide (July 2026). It ke
 
 Treat this as an editorial standard. Don't present its phrase lists as research findings or an AI-detection method. Use a current source for any outside factual claim in the copy you produce. Update your copy of the guide when you have a specific new preference, and don't turn a one-off exception into a permanent rule without a reason.
 
-From [how to talk to robots](https://www.talktorobots.org/style-guide/). Free to copy, adapt, and share under the MIT License. Source and other editions: [github.com/thirdspaced/talktorobotsstyleguide](https://github.com/thirdspaced/talktorobotsstyleguide).
+Created by Amanda Grutza for [how to talk to robots](https://www.talktorobots.org). Free to copy, adapt, and share under the MIT License. Source and other editions: [github.com/thirdspaced/styleguideskill](https://github.com/thirdspaced/styleguideskill).
+
+Reference: Peter Yang's [no-ai-slop skill](https://github.com/petergyang/no-ai-slop), an open-source skill for removing AI writing patterns from a draft.

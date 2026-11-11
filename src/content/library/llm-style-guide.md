@@ -26,7 +26,7 @@ The phrase lists are editorial preferences, not a way to decide whether a person
 
 If most of what you write is for one setting, there are editions with more detail: business, tech, and education. See the source section at the end.
 
-[Download this guide as a Markdown file](/style-guide/llm-style-guide-v3.md), fill in Make it yours, and upload it to your AI project. The instruction above goes into the chat with your notes. Every edition is on the [style guide page](/style-guide/) and on [GitHub](https://github.com/thirdspaced/talktorobotsstyleguide).
+[Download this guide as a Markdown file](/style-guide/llm-style-guide-v3.md), fill in Make it yours, and upload it to your AI project. The instruction above goes into the chat with your notes. Every edition is on the [style guide page](/style-guide/) and on [GitHub](https://github.com/thirdspaced/styleguideskill).
 
 ## Make it yours
 
@@ -374,4 +374,6 @@ Version 3 builds on version 2 of the LLM style and copy guide (July 2026). It ke
 
 Treat this as an editorial standard. Don't present its phrase lists as research findings or an AI-detection method. Use a current source for any outside factual claim in the copy you produce. Update your copy of the guide when you have a specific new preference, and don't turn a one-off exception into a permanent rule without a reason.
 
-From [how to talk to robots](https://www.talktorobots.org/style-guide/). Free to copy, adapt, and share under the MIT License. Source and other editions: [github.com/thirdspaced/talktorobotsstyleguide](https://github.com/thirdspaced/talktorobotsstyleguide).
+Created by Amanda Grutza for [how to talk to robots](https://www.talktorobots.org). Free to copy, adapt, and share under the MIT License. Source and other editions: [github.com/thirdspaced/styleguideskill](https://github.com/thirdspaced/styleguideskill).
+
+Reference: Peter Yang's [no-ai-slop skill](https://github.com/petergyang/no-ai-slop), an open-source skill for removing AI writing patterns from a draft.
