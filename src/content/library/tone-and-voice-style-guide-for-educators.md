@@ -1,7 +1,7 @@
 ---
 title: "Tone and voice style guide for educators: make AI drafts sound like a person"
 description: "Upload this to your AI Project and anything for colleagues, families or students gets a style pass: plain words, no hype, no invented observations, and a six-check final pass."
-topics: [edubuilds, writing, communication]
+topics: [edubuilds, writing, communication, style-guide]
 domains: [teachers]
 type: guide
 date: 2026-10-24
@@ -12,7 +12,9 @@ prompt: |
 
 Use this guide when an AI tool helps you write anything for colleagues, families, or students: lesson materials, directions, feedback, newsletters, emails, and meeting notes. Write as a specific person talking to a specific reader, and give that reader something clear, accurate, and useful.
 
-To use it, fill in the blanks under Make it yours, [download the guide as a PDF](/edubuilds/Tone-and-Voice-Style-Guide-for-Educators.pdf) (or copy this page into a document), and upload it to your AI Project. The [Teaching Thought Partner prompts](/library/teaching-thought-partner-setup/) tell the AI to re-read it and run its final pass before anything leaves your hands. If you are using the guide on its own, the prompt above goes into the chat with your notes. These rules are editing tools, not a test of whether someone used AI.
+This is the education edition of the [LLM style and copy guide, version 3](/style-guide/). There are also core, business, and tech editions.
+
+To use it, fill in the blanks under Make it yours, [download the guide as a PDF](/edubuilds/Tone-and-Voice-Style-Guide-for-Educators.pdf) (or [as a Markdown file](/style-guide/llm-style-guide-v3-education.md), or copy this page into a document), and upload it to your AI Project. The [Teaching Thought Partner prompts](/library/teaching-thought-partner-setup/) tell the AI to re-read it and run its final pass before anything leaves your hands. If you are using the guide on its own, the prompt above goes into the chat with your notes. These rules are editing tools, not a test of whether someone used AI.
 
 ## Make it yours
 
