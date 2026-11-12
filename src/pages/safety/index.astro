@@ -4,16 +4,20 @@ import Byline from '../../components/Byline.astro';
 import CopyBlock from '../../components/CopyBlock.astro';
 
 const PUBLISHED = '2026-11-11';
+const UPDATED = '2026-11-12';
 
-const shortVersion = `Before you install a skill, plugin, or MCP server:
+const shortVersion = `Look, don't run: read a skill on its web page before you download anything.
+
+Before you install a skill, plugin, or MCP server:
 1. Know who made it (exact name, real history)
-2. Open every file, not just SKILL.md
-3. Search it for curl, base64, eval, .env
+2. Read every file, not just SKILL.md
+3. Search for red flags: curl, base64, eval, .env
 4. What it can touch should match its job
-5. Test it with no real keys first
+5. Keep the version you checked, and try it on nothing important first
+Can't tell if it's safe? Don't install it.
 
 Before you trust an artifact or shared chat:
-- A real AI domain doesn't mean a real company
+- A real AI website doesn't mean a real company
 - Never paste a command into Terminal because a page told you to
 - Never type passwords or keys into someone else's artifact`;
 
@@ -98,6 +102,7 @@ const schema = [
       'A plain-English checklist for checking Claude skills, plugins, MCP servers, AI artifacts, and shared chats before you install, run, or trust them.',
     author: { '@type': 'Person', name: 'Amanda Grutza', url: 'https://amandagrutza.com' },
     datePublished: PUBLISHED,
+    dateModified: UPDATED,
   },
 ];
 ---
@@ -110,7 +115,7 @@ const schema = [
   <article class="prose section">
     <p class="kicker">Safety guide</p>
     <h1>How to avoid bad actors and malware online in LLM skills &amp; artifacts</h1>
-    <Byline date={PUBLISHED} />
+    <Byline date={PUBLISHED} updated={UPDATED} />
     <p class="lead">
       Skills, plugins, MCP servers, and shared AI pages are some of the most useful things
       people are making right now, and most of them come from people who want to help. A few
@@ -133,13 +138,15 @@ const schema = [
     <p>
       <strong>A skill</strong> is a folder of instructions (a file called <code>SKILL.md</code>)
       and sometimes scripts. Your AI agent reads the instructions and runs the scripts with
-      <em>your</em> permissions. In Claude Code, Cowork, or any agent on your laptop, that can mean
-      your files, your terminal, your API keys, and your SSH keys.
+      <em>your</em> permissions. In Claude Code, Cowork, or any AI agent on your computer, that
+      can mean your files, your terminal (the text window that can control your whole computer),
+      your API keys (passwords that let apps use paid services in your name), and your saved
+      logins.
     </p>
     <p>
-      Here's the part most people miss: when a skill runs a script, the script's code never
-      enters Claude's context. Only the output comes back. So Claude can't warn you about code
-      it never read. That's why the reading is your job.
+      Here's the part most people miss: when a skill runs a script, Claude only sees what the
+      script reports back, not the script itself. So Claude can't warn you about code it never
+      read. That's why the reading is your job.
     </p>
     <p>
       <strong>Plugins and MCP servers</strong> are programs too. They connect your AI to email,
@@ -176,77 +183,171 @@ const schema = [
 
   <article class="prose section">
     <h2 id="install">Before you install a skill, plugin, or MCP server</h2>
-    <p>Five checks. The first time takes about ten minutes. After that it's closer to five.</p>
+
+    <div class="card rule-card">
+      <h3>The one rule: look, don't run</h3>
+      <p>
+        Reading a file can't hurt your computer. Running it can. A skill's files are mostly plain
+        text, like a note or an email. The damage happens when something gets <em>run</em>: you
+        double-click a program, paste a command, or let your AI install it. Everything below
+        happens <strong>before</strong> you install, and none of it runs anything.
+      </p>
+    </div>
+
+    <h2 id="where" class="sub-h2">Where to look, safest first</h2>
+    <ol class="steps">
+      <li>
+        <h3>On the web page, before you download anything</h3>
+        <p>
+          Most skills live on GitHub, a website where people share code. You don't need an
+          account to read it. Open the link, click into the skill's folder, then click each file.
+          GitHub shows it as text right on the page, like reading a document. Nothing downloads
+          and nothing runs.
+        </p>
+        <p>
+          <strong>This is the best option for almost everyone.</strong> If a skill only comes as
+          a download (a zip in your DMs, a Google Drive file, a "download now" button) and you
+          can't read the files on a web page first, that's your answer. Skip it.
+        </p>
+      </li>
+      <li>
+        <h3>Already downloaded it? Read it as plain text</h3>
+        <p>
+          Unzipping a file doesn't run anything. Double-clicking what's inside might. To read a
+          file without running it, right-click it and choose <strong>Open With, then
+          TextEdit</strong> on a Mac, or <strong>Open with, then Notepad</strong> on Windows.
+          Those apps only show text.
+        </p>
+        <p>Don't double-click anything in the folder, especially files whose names end in:</p>
+        <p class="file-list">
+          <code>.exe</code> <code>.msi</code> <code>.bat</code> <code>.cmd</code> <code>.ps1</code>
+          <code>.app</code> <code>.dmg</code> <code>.pkg</code> <code>.command</code> <code>.sh</code>
+          <code>.jar</code> <code>.html</code>
+        </p>
+        <p>
+          Those can run code or open in your browser. A zip that asks for a password is a stop
+          sign by itself: attackers lock files so security scanners can't look inside.
+        </p>
+      </li>
+      <li>
+        <h3>Doing this a lot? Use a separate space</h3>
+        <p>
+          People who test lots of tools keep them away from their real files: a spare computer,
+          a virtual machine (a whole second computer running inside an app), or a cloud workspace
+          like GitHub Codespaces. That's the gold standard and a good thing to grow into. You
+          don't need it to read a skill on a web page.
+        </p>
+      </li>
+    </ol>
+
+    <h2 id="checks" class="sub-h2">The five checks</h2>
     <ol class="steps">
       <li>
         <h3>Know who made it</h3>
         <p>
           Can you name the person or company, and find them somewhere other than the one post
-          that linked it? Does the repo have history: past commits, open issues, other people
-          contributing? Is the name exact? In the ClawHub campaign, lookalike names like
-          <code>clawhubb</code> and <code>clawhub1</code> carried the malware. A link someone DMs
-          you after you comment on a post tells you nothing about who wrote the code.
+          that linked it? On GitHub, does the project have a history: older updates, other people
+          asking questions or helping? Is the name spelled exactly right? In the ClawHub campaign,
+          lookalike names like <code>clawhubb</code> and <code>clawhub1</code> carried the
+          malware. A link someone DMs you after you comment on a post tells you nothing about who
+          wrote it.
         </p>
       </li>
       <li>
-        <h3>Open every file, not just SKILL.md</h3>
+        <h3>Read every file, not just SKILL.md</h3>
         <p>
-          Read the <code>scripts/</code> folder, every extra <code>.md</code> file, any hooks or
-          <code>package.json</code>, and anything named setup or install. Pay extra attention to
-          a "Prerequisites" or "Setup" section. A step that has you download a program or paste a
-          command is how most of the ClawHub malware got installed.
+          Read every file in one of the safe places above. Most skills are a file called
+          <code>SKILL.md</code>, written in plain English, plus sometimes a <code>scripts</code>
+          folder with code in it.
+        </p>
+        <p>
+          You don't need to understand code to do this. You're looking for things that don't
+          belong, like a "Setup" or "Prerequisites" section that tells you to download a program
+          or paste a command. That's how most of the ClawHub malware got installed.
+        </p>
+        <p>
+          If a skill has code you can't follow, you have good options: skip it, ask someone who
+          reads code to look, or use the AI second opinion below. "I couldn't tell" is a perfectly
+          good reason not to install something.
         </p>
       </li>
       <li>
         <h3>Search for red flags</h3>
-        <p>Look for these words and patterns. A match isn't proof of anything. It means read that line closely.</p>
-        <ul>
-          <li><code>curl | bash</code>, <code>wget</code>: downloads code and runs it</li>
-          <li><code>base64</code>, <code>eval</code>: hides what a command really does</li>
-          <li><code>unzip -P</code>: a password-protected zip that scanners can't open</li>
-          <li><code>~/.ssh</code>, <code>~/.aws</code>, <code>.env</code>: your keys and passwords</li>
-          <li><code>webhook</code>, raw IP addresses: sends data somewhere</li>
-          <li>"ignore previous instructions": prompt injection aimed at your agent</li>
-          <li>"don't tell the user": hides actions from you</li>
-          <li>A line starting with <code>!`</code>: in Claude Code, this runs a command when the skill loads, before Claude reads the skill</li>
-        </ul>
-        <p>On a Mac or Linux computer, open Terminal, go to the folder that holds the skill, and run this. Swap <code>./skill-folder</code> for the skill's folder name.</p>
-      </li>
-    </ol>
-    <CopyBlock text={searchCommand} label="Copy the search" />
-    <ol class="steps" start="4" style="counter-reset: step 3;">
-      <li>
-        <h3>Match what it touches to what it claims</h3>
         <p>
-          A skill that formats slides doesn't need the internet or your API keys. A PDF summarizer
-          doesn't need your whole home folder. A CRM connector shouldn't ask for more permissions
-          than the ones it names. If a skill pulls its instructions from a URL each time it runs,
-          the version you read may not be the version that runs.
+          With a file open, use find: <kbd>Cmd</kbd> + <kbd>F</kbd> on a Mac,
+          <kbd>Ctrl</kbd> + <kbd>F</kbd> on Windows. Search for each of these. Finding one isn't
+          proof of anything. It means stop and read that part closely.
+        </p>
+        <ul class="flags">
+          <li><code>curl</code> or <code>wget</code>: downloads something from the internet, often to run it</li>
+          <li><code>base64</code> or <code>eval</code>: hides what a command really does</li>
+          <li><code>.ssh</code>, <code>.aws</code>, or <code>.env</code>: where your keys and passwords live</li>
+          <li><code>webhook</code> or a string of numbers like <code>45.61.12.8</code>: sends data somewhere</li>
+          <li><code>password</code> next to <code>zip</code>: a locked file scanners can't check</li>
+          <li><code>ignore</code>: as in "ignore previous instructions," a trick aimed at your AI</li>
+          <li><code>tell the user</code>: as in "don't tell the user," which hides things from you</li>
+          <li><code>!`</code>: in Claude Code, a line starting with this runs a command the moment the skill loads</li>
+        </ul>
+        <details class="tech">
+          <summary>Comfortable with Terminal? Search every file at once</summary>
+          <p>
+            This only searches the text. It doesn't run anything in the skill. Open Terminal, go
+            to the folder that holds the skill, and run this. Swap <code>./skill-folder</code>
+            for the skill's folder name.
+          </p>
+          <CopyBlock text={searchCommand} label="Copy the search" />
+        </details>
+      </li>
+      <li>
+        <h3>Make sure what it touches matches its job</h3>
+        <p>
+          A skill that formats slides doesn't need the internet or your passwords. A PDF
+          summarizer doesn't need every file on your computer. If what it reaches for is bigger
+          than what it says it does, skip it. Also watch for a skill that loads its instructions
+          from a link each time it runs: whoever controls the link can change them after you
+          checked.
         </p>
       </li>
       <li>
-        <h3>Pin the version and test it somewhere safe</h3>
+        <h3>Keep the version you checked</h3>
         <p>
-          Copy the exact version you read into your own folder or repo instead of installing from
-          a live link. Treat every update as a new install and read what changed. The fake
-          postmark-mcp server was clean for 15 versions before the bad one. Run anything new in a
-          test project first, with no real passwords or production keys nearby.
+          Save your own copy of the exact version you read. Tools can change after you check
+          them: the fake postmark-mcp server was clean for 15 versions before the bad one. When
+          the author updates it, read what changed before you update too.
+        </p>
+        <p>
+          For the first run, try it on something that doesn't matter: a practice folder with no
+          personal or work files in it, and not on your work computer.
         </p>
       </li>
     </ol>
 
-    <h3>Want a second opinion?</h3>
+    <h2 id="second-opinion" class="sub-h2">Not sure? Get a second opinion</h2>
     <p>
-      Paste the skill's files into a fresh chat with no connectors, files, or tools turned on,
-      under this prompt. A reviewing AI can be targeted by the same tricks, so use this alongside
-      your own read, not instead of it.
+      You can ask an AI to read it with you, without downloading anything. On GitHub, open each
+      file and use the copy button at the top right of the file (it looks like two overlapping
+      squares). Start a brand-new chat with no connected apps or file access turned on, paste
+      the prompt below, then paste the files under it.
+    </p>
+    <p>
+      Ask it to read, never to install. A reviewing AI can be fooled by the same tricks, so
+      treat its answer as one opinion, not a green light.
     </p>
     <CopyBlock text={reviewPrompt} label="Copy the review prompt" />
     <p>
-      If you're comfortable in the terminal, Snyk's free scanner checks the skills and MCP
-      servers you already have installed: <code>uvx mcp-scan@latest --skills</code>. It's
-      another third-party tool, so treat a clean result as one input.
+      For people comfortable in Terminal: Snyk's free scanner checks the skills and MCP servers
+      you already have installed with <code>uvx mcp-scan@latest --skills</code>. It's another
+      tool from someone else, so treat a clean result as one input too.
     </p>
+
+    <div class="card rule-card">
+      <h3>The easiest safe choice</h3>
+      <p>
+        New to all this? Stick to skills built into your AI app by the company that makes it,
+        ones your company's IT team approved, or ones you wrote yourself. You'll get most of the
+        benefit, and you can branch out as you get comfortable.
+      </p>
+    </div>
   </article>
 
   <article class="prose section">
@@ -268,9 +369,10 @@ const schema = [
       <li>
         <h3>Never paste a command because a page told you to</h3>
         <p>
-          This trick has a name, ClickFix: a page tells you to copy a command into Terminal or
-          PowerShell to "install" or "fix" something. It skips the download warnings your
-          computer would normally show. Every case in the list above that started with a search
+          This trick has a name, ClickFix: a page tells you to open Terminal (Mac) or PowerShell
+          (Windows) and paste in a command to "install" or "fix" something. It skips the
+          warnings your computer would normally show. If you've never opened Terminal, good: a
+          real app download never asks you to. If a page does, close it. Every case in the list above that started with a search
           ad worked this way or with a fake download button. Get apps from the company's own
           website, typed into the address bar yourself, not from an ad or a shared link.
         </p>
@@ -431,6 +533,48 @@ const schema = [
   }
   .steps ul li::before {
     content: none;
+  }
+  .rule-card {
+    border-top: 3px solid var(--sunbeam);
+    margin: 1.25rem 0 1.5rem;
+  }
+  .rule-card h3 {
+    margin: 0 0 0.35rem;
+  }
+  .rule-card p {
+    margin: 0;
+    color: var(--ink);
+    font-size: var(--text-base);
+  }
+  .sub-h2 {
+    font-size: var(--text-xl);
+  }
+  .file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  kbd {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    border: 1px solid var(--card-line);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    padding: 0 0.4rem;
+    background: #fff;
+  }
+  details.tech {
+    border: 1px solid var(--card-line);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    background: var(--paper-deep);
+  }
+  details.tech summary {
+    cursor: pointer;
+    font-weight: 500;
+  }
+  details.tech[open] summary {
+    margin-bottom: 0.5rem;
   }
   .sources li {
     margin-bottom: 0.35rem;
