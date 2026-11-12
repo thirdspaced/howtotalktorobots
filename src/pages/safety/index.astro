@@ -6,7 +6,7 @@ import CopyBlock from '../../components/CopyBlock.astro';
 const PUBLISHED = '2026-11-11';
 const UPDATED = '2026-11-12';
 
-const shortVersion = `Look, don't run: read a skill on its web page before you download anything.
+const shortVersion = `Read a skill's files on its web page before you download or install anything.
 
 Before you install a skill, plugin, or MCP server:
 1. Know who made it (exact name, real history)
@@ -144,7 +144,7 @@ const schema = [
       logins.
     </p>
     <p>
-      Here's the part most people miss: when a skill runs a script, Claude only sees what the
+      When a skill runs a script, Claude only sees what the
       script reports back, not the script itself. So Claude can't warn you about code it never
       read. That's why the reading is your job.
     </p>
@@ -154,8 +154,8 @@ const schema = [
     </p>
     <p>
       <strong>Artifacts and shared chats</strong> are pages someone else made with an AI tool and
-      published on the AI company's own domain, like claude.ai or chatgpt.com. That domain is
-      real. What's on the page is whatever the author wanted it to say.
+      published on the AI company's own domain, like claude.ai or chatgpt.com. Anyone with an
+      account can publish there, so the domain tells you nothing about who made the page.
     </p>
     <p>
       Anthropic's own guidance says to use skills only from trusted sources, meaning ones you
@@ -185,12 +185,12 @@ const schema = [
     <h2 id="install">Before you install a skill, plugin, or MCP server</h2>
 
     <div class="card rule-card">
-      <h3>The one rule: look, don't run</h3>
+      <h3>Read the files before you install anything</h3>
       <p>
-        Reading a file can't hurt your computer. Running it can. A skill's files are mostly plain
-        text, like a note or an email. The damage happens when something gets <em>run</em>: you
-        double-click a program, paste a command, or let your AI install it. Everything below
-        happens <strong>before</strong> you install, and none of it runs anything.
+        A skill's files are mostly plain text, like a note or an email. Opening one to read it
+        doesn't change anything on your computer. Problems start when something runs: you
+        double-click a program, paste a command, or let your AI install the skill. Everything in
+        this section happens before you install, and none of it runs anything.
       </p>
     </div>
 
@@ -207,7 +207,7 @@ const schema = [
         <p>
           <strong>This is the best option for almost everyone.</strong> If a skill only comes as
           a download (a zip in your DMs, a Google Drive file, a "download now" button) and you
-          can't read the files on a web page first, that's your answer. Skip it.
+          can't read the files on a web page first, don't install it.
         </p>
       </li>
       <li>
@@ -363,7 +363,7 @@ const schema = [
           Anyone with an account can publish an artifact or share a chat on claude.ai,
           chatgpt.com, or grok.com. A page there can look exactly like Anthropic's, Apple's, or
           your bank's. Claude marks published artifacts with "Content is user-generated and
-          unverified." Read that line as it's written.
+          unverified." That notice means exactly what it says.
         </p>
       </li>
       <li>
@@ -371,8 +371,8 @@ const schema = [
         <p>
           This trick has a name, ClickFix: a page tells you to open Terminal (Mac) or PowerShell
           (Windows) and paste in a command to "install" or "fix" something. It skips the
-          warnings your computer would normally show. If you've never opened Terminal, good: a
-          real app download never asks you to. If a page does, close it. Every case in the list above that started with a search
+          warnings your computer would normally show. A real app download never asks you to open
+          Terminal. If a page does, close it. Every case in the list above that started with a search
           ad worked this way or with a fake download button. Get apps from the company's own
           website, typed into the address bar yourself, not from an ad or a shared link.
         </p>
@@ -442,8 +442,8 @@ const schema = [
     <p>
       Link the source, say what it touches, and tell people to read it before they install. A
       post that says "comment SKILLS and I'll DM you the repo" teaches people to skip every step
-      on this page. Sharing your work in the open is the whole spirit of this site. Sharing it
-      in a way that keeps people safe is part of that.
+      on this page. This site exists to share work openly, and that includes giving people what
+      they need to check it.
     </p>
 
     <h2 id="sources">Sources</h2>
